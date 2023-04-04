@@ -3,7 +3,8 @@ import SpriteKit
 class BeforeStartScence: SKScene {
     
     var systemTime: CFTimeInterval = 1.0
-  
+    let atlas = SKTextureAtlas(named: "Start")
+    var bgTexture = SKTexture()
     
     override func didMove(to view: SKView) {
         
@@ -41,39 +42,28 @@ extension BeforeStartScence {
   
     
     private func configureUI(){
-        
-        let scenceWidth = self.frame.width
-        let scenceHeight = self.frame.height
-        
-        self.backgroundColor = .black
-        
-        let titleLabel = SKLabelNode()
-        titleLabel.fontName = CustomFont.jbmBold
-        titleLabel.fontColor = .white
-        titleLabel.text = "탄소 수호자"
-        
-        titleLabel.fontSize = 50
-        titleLabel.horizontalAlignmentMode = .center
-        titleLabel.verticalAlignmentMode = .center
-        titleLabel.position = CGPoint(x:scenceWidth/2 , y: scenceHeight/2)
-        titleLabel.zPosition = Layer.zMax
-        
-        
-        self.addChild(titleLabel)
-        
-        
-        let startButton = SKShapeNode(rect: CGRect(x: 0, y: 0, width: 300, height: 200))
-        
-        startButton.fillColor = .red
-        
-        startButton.position = CGPoint(x: titleLabel.position.x, y: titleLabel.position.y  - startButton.frame.size.height - 50)
-        
-        startButton.position
-        startButton.name = "startBtn"
+        configureBG()
         
         
         
-        self.addChild(startButton)
+        
         
     }
+    
+    private func configureBG() {
+        let scenceWidth = self.frame.width
+        let scenceHeight = self.frame.height
+        bgTexture = atlas.textureNamed("BG")
+    
+        let bg = SKSpriteNode(texture: bgTexture)
+        
+        bg.size = CGSize(width: scenceWidth, height: scenceHeight)
+        
+        bg.position = CGPoint(x:scenceWidth/2 , y: scenceHeight/2)
+        bg.zPosition = .zero
+        
+        
+        self.addChild(bg)
+    }
+    
 }
