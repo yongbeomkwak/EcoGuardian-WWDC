@@ -22,6 +22,17 @@ class BeforeStartScence: SKScene {
 //        let gameScene = GameScene(size: self.size)
         
 //        self.view?.presentScene(gameScene, transition: .fade(withDuration: 1.0))
+        let touch = touches.first
+        
+        if let location = touch?.location(in: self) {
+                       let nodesArray = self.nodes(at: location)
+                       
+            if nodesArray.first?.name == "startBtn" {
+                           
+                print("START")
+            }
+        }
+        
     }
 }
 
@@ -48,10 +59,21 @@ extension BeforeStartScence {
         titleLabel.zPosition = Layer.zMax
         
         
-    
-        
-        
         self.addChild(titleLabel)
+        
+        
+        let startButton = SKShapeNode(rect: CGRect(x: 0, y: 0, width: 300, height: 200))
+        
+        startButton.fillColor = .red
+        
+        startButton.position = CGPoint(x: titleLabel.position.x, y: titleLabel.position.y  - startButton.frame.size.height - 50)
+        
+        startButton.position
+        startButton.name = "startBtn"
+        
+        
+        
+        self.addChild(startButton)
         
     }
 }

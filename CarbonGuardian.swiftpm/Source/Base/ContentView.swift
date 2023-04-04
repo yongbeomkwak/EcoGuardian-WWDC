@@ -18,19 +18,19 @@ struct ContentView: View {
                 .ignoresSafeArea()
                 .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
                 }
-        .onAppear{
-            
-            for family in UIFont.familyNames {
-                    print(family)
-            
-                for names in UIFont.fontNames(forFamilyName: family) {
-
-                    print("== \(names)")
-
-                }
-        }
-            
-        }
+//        .onAppear{
+//            
+//            for family in UIFont.familyNames {
+//                    print(family)
+//            
+//                for names in UIFont.fontNames(forFamilyName: family) {
+//
+//                    print("== \(names)")
+//
+//                }
+//        }
+//            
+//        }
     }
 
 }
