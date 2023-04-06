@@ -56,41 +56,39 @@ struct ConversationView: View {
                 .frame(maxWidth: .infinity,maxHeight: .infinity)
             
             
-            
-            
-            if isVillain {
-                ZStack {
-                    Button {
+            ZStack{
+                Button {
+                    
+                    switch page {
                         
-                        switch page {
-                            
-                        case .talk1:
-                            page = .talk2
-                        case .talk2:
-                            page = .talk3
-                        case .talk3:
-                            page = .talk4
-                        case .talk4:
-                            page = .howToPlay
-                        case .howToPlay:
-                            print("Hello")
-                        }
-                        
-                        
-                    } label: {
-                        
-                        Text("Next")
-                            .foregroundColor(.green)
-                            .fontWeight(.bold)
-                            .padding(25)
-                            .background(.white)
-                            .cornerRadius(15)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 15)
-                                    .stroke(.green, lineWidth: 3)
-                            )
+                    case .talk1:
+                        page = .talk2
+                    case .talk2:
+                        page = .talk3
+                    case .talk3:
+                        page = .talk4
+                    case .talk4:
+                        page = .howToPlay
+                    case .howToPlay:
+                        print("Hello")
                     }
                     
+                    
+                } label: {
+                    
+                    Text("Next")
+                        .foregroundColor(.green)
+                        .fontWeight(.bold)
+                        .padding(25)
+                        .background(.white)
+                        .cornerRadius(15)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 15)
+                                .stroke(.green, lineWidth: 3)
+                        )
+                }
+                
+                if isVillain {
                     VStack{
                         
                         Text(Character.villainName)
@@ -107,44 +105,8 @@ struct ConversationView: View {
                     }
                     .padding(.trailing,20)
                     .frame(maxWidth: .infinity,alignment: .trailing)
-                    
                 }
-                
-            
-            }
-            
-            else {
-                ZStack {
-                    Button {
-                        
-                        switch page {
-                            
-                        case .talk1:
-                            page = .talk2
-                        case .talk2:
-                            page = .talk3
-                        case .talk3:
-                            page = .talk4
-                        case .talk4:
-                            page = .howToPlay
-                        case .howToPlay:
-                            print("Hello")
-                        }
-                        
-                        
-                    } label: {
-                        
-                        Text("Next")
-                            .foregroundColor(.green)
-                            .fontWeight(.bold)
-                            .padding(25)
-                            .background(.white)
-                            .cornerRadius(15)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 15)
-                                    .stroke(.green, lineWidth: 3)
-                            )
-                    }
+                else {
                     
                     VStack{
                         
@@ -163,13 +125,10 @@ struct ConversationView: View {
                     .padding(.leading,20)
                     .frame(maxWidth: .infinity,alignment: .leading)
                     
-                }            }
+                }
+            }
             
-            
-            
-
-            
-            
+        
         }
         .frame(width: UIScreen.width - 200, height:UIScreen.height / 2)
         .padding(20)
