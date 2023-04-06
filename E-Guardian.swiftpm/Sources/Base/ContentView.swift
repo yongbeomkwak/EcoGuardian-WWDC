@@ -13,11 +13,22 @@ struct ContentView: View {
                 .resizable()
             
             if viewModel.page == .talk1 {
-                ConversationView(isVillain: true,desription: Conversation.villain1,page: $viewModel.page)
+                ConversationView(isVillain: true,desriptions: Conversation.villain1,page: $viewModel.page)
             }
             
             else if viewModel.page == .talk2 {
-                ConversationView(isVillain: false,desription: Conversation.villain1,page: $viewModel.page)
+                ConversationView(isVillain: false,desriptions: Conversation.hero1,page: $viewModel.page)
+            }
+
+            else if viewModel.page == .talk3 {
+                ConversationView(isVillain: true, desriptions: Conversation.villain2, page: $viewModel.page)
+            }
+            else if viewModel.page == .talk4 {
+                ConversationView(isVillain: false, desriptions: Conversation.hero2, page: $viewModel.page)
+            }
+            
+            else if viewModel.page == .howToPlay {
+                
             }
             
             
@@ -35,25 +46,42 @@ struct ContentView: View {
 struct ConversationView: View {
     
     var isVillain:Bool
-    var desription:String
+    var desriptions:[String]
     @Binding var page:Page
     
     
     var body: some View {
         
-        VStack(spacing: 20){
+        VStack(spacing: 10){
             
             
             Text("E-Guardian")
                 .font(.system(.largeTitle))
                 .bold()
                 .padding(.top,20)
+            
+            
+            ForEach(desriptions,id:\.self){ desription in
                 
+                Text(desription)
+                    .font(.title2)
 
-            Text(desription)
-                .font(.title2)
-                .lineSpacing(10)
-                .frame(maxWidth: .infinity,maxHeight: .infinity)
+                
+            }.padding(.top)
+            
+
+            
+            
+            
+            if page == .talk1 {
+                Image("graph")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 250)
+                    .padding(.top)
+                
+            }
+            
             
             
             ZStack{
@@ -79,7 +107,8 @@ struct ConversationView: View {
                     Text("Next")
                         .foregroundColor(.green)
                         .fontWeight(.bold)
-                        .padding(25)
+                        .padding(.horizontal,30)
+                        .padding(.vertical,20)
                         .background(.white)
                         .cornerRadius(15)
                         .overlay(
@@ -101,6 +130,8 @@ struct ConversationView: View {
                             .resizable()
                             .aspectRatio(contentMode: .fill)
                             .frame(width: 100,height: 100)
+                        
+                        
                             
                     }
                     .padding(.trailing,20)
@@ -127,10 +158,12 @@ struct ConversationView: View {
                     
                 }
             }
-            
+            .frame(maxHeight: .infinity,alignment: .bottom)
+        
+           
         
         }
-        .frame(width: UIScreen.width - 200, height:UIScreen.height / 2)
+        .frame(width: UIScreen.width - 200, height:UIScreen.height / 1.5)
         .padding(20)
         .border(.white,width: 3)
         .background(Color.villonTextBgColor)        
