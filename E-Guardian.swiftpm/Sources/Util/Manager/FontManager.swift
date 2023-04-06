@@ -2,7 +2,10 @@ import SwiftUI
 public struct FontManager {
     
     public static func registerFonts() {
-        registerFont(bundle: Bundle.main, fontName: "JetBrainsMono-Bold", fontExtension: ".ttf")
+//        registerFont(bundle: Bundle.main, fontName: "JetBrainsMono-Bold", fontExtension: ".ttf")
+        
+        registerFont(bundle: Bundle.main, fontName: "NeoDunggeunmoPro-Regular", fontExtension: ".ttf")
+        
         
     }
     
