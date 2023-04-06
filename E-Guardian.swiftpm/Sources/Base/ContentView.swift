@@ -78,7 +78,7 @@ struct ConversationView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(height: 250)
-                    .padding(.top)
+                
                 
             }
             
@@ -163,8 +163,8 @@ struct ConversationView: View {
            
         
         }
-        .frame(width: UIScreen.width - 200, height:UIScreen.height / 1.5)
-        .padding(20)
+        .frame(width: UIScreen.width - 200, height:UIScreen.height / 2)
+        .padding(.bottom,50)
         .border(.white,width: 3)
         .background(Color.villonTextBgColor)        
         .cornerRadius(15)
