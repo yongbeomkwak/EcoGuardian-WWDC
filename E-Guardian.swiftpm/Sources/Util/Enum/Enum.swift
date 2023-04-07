@@ -16,3 +16,9 @@ enum Page:Int {
     case howToPlay
     
 }
+
+enum GameState {
+    
+    case playing,clear
+    
+}

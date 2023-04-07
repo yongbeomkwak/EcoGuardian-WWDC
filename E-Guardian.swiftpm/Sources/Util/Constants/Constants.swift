@@ -8,11 +8,15 @@ import Foundation
 
 
 
-struct PhsicsCategory {
+
+struct PhysicsCategory {
     
-    static let player:UInt32 = 0x1 << 0
-    static let land:UInt32 = 0x1 << 1
     
+    static let player:UInt32 = 0x1 << 0 // 1
+    static let tree:UInt32 = 0x1 << 1 // 2
+    static let blub:UInt32 = 0x1 << 2 // 4
+    static let villian:UInt32 = 0x1 << 3 // 8
+    static let land:UInt32 = 0x1 << 4
 }
 
 struct Layer {
@@ -20,6 +24,8 @@ struct Layer {
     static let bg:CGFloat = 0
     
     static let player:CGFloat = 1
+    
+    static let item:CGFloat = 1
     
     static let zMax:CGFloat = 10
     

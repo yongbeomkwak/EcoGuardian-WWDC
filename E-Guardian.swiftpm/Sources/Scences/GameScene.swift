@@ -11,9 +11,20 @@ import SpriteKit
 class GameScene: SKScene, ObservableObject{
 
     var player = SKSpriteNode()
-    
+    let cameraNode = SKCameraNode()
     var scoreLabel = SKLabelNode()
-    @Published var pulltionPercent:Int = 100
+    
+    var generateTimer1 = Timer()
+    var generateTimer2 = Timer()
+    var generateTimer3 = Timer()
+    var touchesBegan = false
+    var gameState = GameState.playing
+    
+    let bgAtlas = SKTextureAtlas(named: "BG")
+    let birdAtlas = SKTextureAtlas(named: "Bird")
+    let itemAtlas = SKTextureAtlas(named: "Items")
+    
+    @Published var carbonPercent:Int = 100
     
     override func didMove(to view: SKView) {
         
@@ -23,8 +34,33 @@ class GameScene: SKScene, ObservableObject{
         
         fetchBackground(landName:"desrtLand")
         
+        
+        camera = cameraNode
+        cameraNode.position.x = self.size.width / 2
+        cameraNode.position.y = self.size.height / 2
+        self.addChild(cameraNode)
+        
         createPlayer()
         createScore()
+        
+        generateTimer1 = .scheduledTimer(timeInterval: 5, target: self, selector: #selector(makeTree), userInfo: nil, repeats: true)
+        
+        generateTimer2 = .scheduledTimer(timeInterval: 8, target: self, selector: #selector(makeBulb), userInfo: nil, repeats: true)
+        
+        generateTimer3 = .scheduledTimer(timeInterval: 2, target: self, selector: #selector(makeVillain), userInfo: nil, repeats: true)
+    }
+    
+    override func update(_ currentTime: TimeInterval) {
+        let rotation = self.player.zRotation
+      
+        self.player.zRotation = .zero
+        
+        if player.position.y > size.height - (size.height / 4.5) {
+            player.position.y = size.height - (size.height / 4.5)
+        }
+      
+      
+
     }
     
 }
@@ -34,9 +70,9 @@ extension GameScene {
     
     func fetchBackground(landName:String) {
         
-        let atlas = SKTextureAtlas(named: "BG")
         
-        let landTexture = atlas.textureNamed(landName)
+        
+        let landTexture = bgAtlas.textureNamed(landName)
         
         let width = self.size.width
         let height = self.size.height
@@ -60,7 +96,7 @@ extension GameScene {
             land.name = "land"
             land.physicsBody = SKPhysicsBody(rectangleOf: land.size,center: CGPoint(x: landWidth/2, y: land.size.height/2))
             
-            land.physicsBody?.categoryBitMask = PhsicsCategory.land
+            land.physicsBody?.categoryBitMask = PhysicsCategory.land
             land.physicsBody?.affectedByGravity = false
             land.physicsBody?.isDynamic = false
             
@@ -83,7 +119,6 @@ extension GameScene {
     }
     
     func createScore() {
-        scoreLabel = SKLabelNode()
     
         scoreLabel.fontName = "AppleSDGothicNeo-Regular"
         scoreLabel.fontSize = 20
@@ -91,39 +126,39 @@ extension GameScene {
         scoreLabel.position = CGPoint(x: self.size.width/2, y: self.size.height - 60)
         scoreLabel.zPosition = Layer.zMax
         scoreLabel.horizontalAlignmentMode = .center
-        scoreLabel.text = "\(self.pulltionPercent)%"
+        scoreLabel.text = "\(self.carbonPercent)%"
         addChild(scoreLabel)
     }
     
     func createPlayer() {
-        let atlas = SKTextureAtlas(named: "Bird")
+        
         
         let width = self.size.width
         let height = self.size.height
-        
-        let bgatlas = SKTextureAtlas(named: "BG")
-        let landTexture = atlas.textureNamed("desertLand")
-        
+    
+        let landTexture = bgAtlas.textureNamed("desertLand")
         
         
-        player = SKSpriteNode(texture: atlas.textureNamed("bird1"))
+        
+        player = SKSpriteNode(texture:birdAtlas.textureNamed("bird1"))
         player.position = CGPoint(x:self.size.width/2 , y: self.size.height/2)
         player.zPosition = Layer.player
+        player.zRotation = .zero
         
         player.physicsBody = SKPhysicsBody(circleOfRadius: player.size.height/2)
-        player.physicsBody?.categoryBitMask = PhsicsCategory.player
+        player.physicsBody?.categoryBitMask = PhysicsCategory.player
         
-        player.physicsBody?.contactTestBitMask = PhsicsCategory.land
-        player.physicsBody?.collisionBitMask = PhsicsCategory.land
-        player.physicsBody?.isDynamic = false
+        player.physicsBody?.contactTestBitMask = PhysicsCategory.land | PhysicsCategory.tree | PhysicsCategory.blub | PhysicsCategory.villian
+        player.physicsBody?.collisionBitMask = PhysicsCategory.land | PhysicsCategory.tree | PhysicsCategory.blub | PhysicsCategory.villian
+        player.physicsBody?.isDynamic = true
         player.physicsBody?.affectedByGravity = true
-
+        
 //        player.setScale(0.5)
         
         self.addChild(player)
         var animation = [SKTexture]()
         
-        for i in 1...atlas.textureNames.count {
+        for i in 1...birdAtlas.textureNames.count {
             animation.append(SKTexture(imageNamed: "bird\(i)"))
         }
         
@@ -139,8 +174,205 @@ extension GameScene {
         
     }
     
+    @objc func makeTree() {
+        
+        
+        
+        let treeTexture = itemAtlas.textureNamed("tree")
+        print(treeTexture)
+        
+        let tree = SKSpriteNode(texture: treeTexture)
+        
+        let lowLimit  = bgAtlas.textureNamed("land").size().height + 50
+        let highLimit = self.size.height - treeTexture.size().height
+        
+        
+        tree.position = CGPoint(x: 1000, y: Int.random(in: Int(lowLimit)...Int(highLimit)))
+        tree.zPosition = Layer.item
+        tree.name = "tree"
+        tree.physicsBody = SKPhysicsBody(rectangleOf: tree.size)
+        tree.physicsBody?.isDynamic = true
+        tree.physicsBody?.affectedByGravity = false
+        tree.physicsBody?.contactTestBitMask = PhysicsCategory.tree
+        
+        tree.setScale(0.5)
+        
+        addChild(tree)
+        
+        
+        let moveAction = SKAction.moveTo(x: -50, duration: 10)
+        let removeAction = SKAction.removeFromParent()
+                
+        let actions = SKAction.sequence([moveAction,removeAction])
+        
+        tree.run(actions)
+        
+        
+    }
+    
+    @objc func makeBulb() {
+        
+        
+        
+        let bulbTexture = itemAtlas.textureNamed("bulb")
+        
+        
+        let bulb = SKSpriteNode(texture: bulbTexture)
+        
+        let lowLimit  = bgAtlas.textureNamed("land").size().height + 50
+        let highLimit = self.size.height - bulbTexture.size().height
+        
+        
+        bulb.position = CGPoint(x: 1000, y: Int.random(in: Int(lowLimit)...Int(highLimit)))
+        bulb.zPosition = Layer.item
+        bulb.name = "bulb"
+        bulb.physicsBody = SKPhysicsBody(rectangleOf: bulb.size)
+        bulb.physicsBody?.isDynamic = false
+        bulb.physicsBody?.affectedByGravity = false
+        bulb.physicsBody?.contactTestBitMask = PhysicsCategory.blub
+        
+        bulb.setScale(0.5)
+        
+        addChild(bulb)
+        
+        
+        let moveAction = SKAction.moveTo(x: -50, duration: 10)
+        let removeAction = SKAction.removeFromParent()
+                
+        let actions = SKAction.sequence([moveAction,removeAction])
+        
+        bulb.run(actions)
+        
+        
+    }
+    
+    @objc func makeVillain() {
+        
+        
+        
+        let villainTexture = SKTexture(imageNamed: "villain")
+        
+        let villain = SKSpriteNode(texture: villainTexture)
+        
+        let lowLimit  = bgAtlas.textureNamed("land").size().height + 50
+        let highLimit = self.size.height - villainTexture.size().height
+        
+        
+        villain.position = CGPoint(x: 1000, y: Int.random(in: Int(lowLimit)...Int(highLimit)))
+        villain.zPosition = Layer.item
+        villain.name = "villain"
+        villain.physicsBody = SKPhysicsBody(rectangleOf: villain.size)
+        villain.physicsBody?.isDynamic = true
+        villain.physicsBody?.affectedByGravity = false
+        villain.physicsBody?.contactTestBitMask = PhysicsCategory.villian
+        villain.setScale(0.3)
+        
+        addChild(villain)
+        
+        
+        let moveAction = SKAction.moveTo(x: -50, duration: 10)
+        let removeAction = SKAction.removeFromParent()
+                
+        let actions = SKAction.sequence([moveAction,removeAction])
+        
+        villain.run(actions)
+        
+        
+    }
     
     
     
+}
+
+extension GameScene {
+    
+    func damageEffect(){
+           let flashNode = SKSpriteNode(color: UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0), size: self.size)
+           
+           let actionSequence = SKAction.sequence([SKAction.wait(forDuration: 0.01),SKAction.removeFromParent()])
+           
+           flashNode.name = "flashNode"
+           flashNode.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
+           flashNode.zPosition = Layer.zMax
+           addChild(flashNode)
+           flashNode.run(actionSequence)
+        
+           
+           let wait = SKAction.wait(forDuration: 1)
+          // let soundSequence = SKAction.sequence([SoundFX.hit,wait,SoundFX.die])
+           
+          // run(soundSequence)
+           
+       }
+       
+       func cameraShake(){
+           let moveLeft = SKAction.moveTo(x: self.size.width/2 - 5, duration: 0.1)
+           let moveRight = SKAction.moveTo(x: self.size.width/2 + 5, duration: 0.1)
+           let moveReset = SKAction.moveTo(x: self.size.width/2 , duration: 0.1)
+           let shakeAction = SKAction.sequence([moveLeft,moveRight,moveLeft,moveRight,moveReset])
+           shakeAction.timingMode = .easeInEaseOut
+           self.cameraNode.run(shakeAction)
+       }
+    
+}
+
+extension GameScene: SKPhysicsContactDelegate {
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        if gameState == .playing {
+            self.player.physicsBody?.velocity = CGVector(dx: 0, dy: 0) // 속도 리셋
+            self.player.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 20))
+        }
+        
+        
+        
+    
+        
+    }
+
+    func didBegin(_ contact: SKPhysicsContact) {
+        var  collideBody = SKPhysicsBody()
+                
+                
+                //비트마스크 큰게 플레이어
+                if contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask {
+                    collideBody = contact.bodyB
+                    
+                } else {
+                    
+                    collideBody = contact.bodyA
+                }
+                
+                
+            let collideType = collideBody.categoryBitMask
+                
+                
+                switch collideType {
+                    
+                case PhysicsCategory.tree:
+                    
+                    self.carbonPercent -= 4
+                    
+                
+                case PhysicsCategory.blub:
+                    self.carbonPercent -= 8
+                    
+                    
+                case PhysicsCategory.villian:
+                    self.carbonPercent += 10
+                
+                    
+                default:
+                    break
+                    
+                    
+                }
+        
+            self.carbonPercent  = self.carbonPercent < 0 ? 0 :self.carbonPercent
+        
+       
+    }
+
 }
 
