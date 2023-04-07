@@ -181,7 +181,7 @@ struct ConversationView: View {
         .frame(width: UIScreen.width - 200, height:UIScreen.height / 1.5)
         .padding(.bottom,50)
         .border(.white,width: 3)
-        .background(Color.villonTextBgColor)
+        //.background(Color.villonTextBgColor)
         .cornerRadius(15)
         
         
