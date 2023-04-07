@@ -205,7 +205,7 @@ extension GameScene {
         addChild(tree)
         
         
-        let moveAction = SKAction.moveTo(x: -50, duration: 10)
+        let moveAction = SKAction.moveTo(x: -tree.size.width, duration: 10)
         let removeAction = SKAction.removeFromParent()
                 
         let actions = SKAction.sequence([moveAction,removeAction])
@@ -241,7 +241,7 @@ extension GameScene {
         addChild(bulb)
         
         
-        let moveAction = SKAction.moveTo(x: -50, duration: 10)
+        let moveAction = SKAction.moveTo(x: -bulb.size.width, duration: 10)
         let removeAction = SKAction.removeFromParent()
                 
         let actions = SKAction.sequence([moveAction,removeAction])
@@ -275,7 +275,7 @@ extension GameScene {
         addChild(villain)
         
         
-        let moveAction = SKAction.moveTo(x: -50, duration: 10)
+        let moveAction = SKAction.moveTo(x: -villain.size.width, duration: 10)
         let removeAction = SKAction.removeFromParent()
                 
         let actions = SKAction.sequence([moveAction,removeAction])
@@ -319,6 +319,12 @@ extension GameScene {
            self.cameraNode.run(shakeAction)
        }
     
+    func collideObject(object:SKSpriteNode)
+    {
+        
+        object.removeFromParent()
+    }
+    
 }
 
 extension GameScene: SKPhysicsContactDelegate {
@@ -352,11 +358,17 @@ extension GameScene: SKPhysicsContactDelegate {
                     collideBody = contact.bodyA
                 }
                 
+            
+        
                 
             let collideType = collideBody.categoryBitMask
                 
-                print(collideType)
                 
+        
+        if collideType == PhysicsCategory.land {
+            return
+        }
+        
                 switch collideType {
                     
                 case PhysicsCategory.tree:
@@ -378,6 +390,14 @@ extension GameScene: SKPhysicsContactDelegate {
                     
                     
                 }
+        
+        
+        if let object = collideBody.node as? SKSpriteNode {
+            collideObject(object: object)
+        }
+        
+        
+        
             
         self.carbonPercent  = self.carbonPercent > 100 ? 100 :self.carbonPercent
             self.carbonPercent  = self.carbonPercent < 0 ? 0 :self.carbonPercent
