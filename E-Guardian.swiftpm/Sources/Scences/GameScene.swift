@@ -21,6 +21,8 @@ class GameScene: SKScene, ObservableObject{
         
         fetchBackground(landName:"desrtLand")
         
+        createPlayer()
+        
     }
     
 }
@@ -79,19 +81,43 @@ extension GameScene {
     }
     
     func createPlayer() {
-        let atlas = SKTextureAtlas(named: "Bear")
+        let atlas = SKTextureAtlas(named: "Bird")
         
         let width = self.size.width
         let height = self.size.height
         
+        let bgatlas = SKTextureAtlas(named: "BG")
+        let landTexture = atlas.textureNamed("desertLand")
         
-        player = SKSpriteNode(texture: atlas.textureNamed("wark1"))
         
+        
+        player = SKSpriteNode(texture: atlas.textureNamed("bird1"))
+        player.position = CGPoint(x:landTexture.size().width/3 , y: landTexture.size().height - 30)
+        player.zPosition = Layer.player
+        
+        player.physicsBody = SKPhysicsBody(circleOfRadius: player.size.height/2)
+        player.physicsBody?.categoryBitMask = PhsicsCategory.player
+        
+        player.physicsBody?.contactTestBitMask = PhsicsCategory.land
+        player.physicsBody?.collisionBitMask = PhsicsCategory.land
+        player.physicsBody?.isDynamic = false
+        player.physicsBody?.affectedByGravity = true
 
-        
-        
+        player.setScale(0.5)
         
         self.addChild(player)
+        var animation = [SKTexture]()
+        
+        for i in 1...atlas.textureNames.count {
+            animation.append(SKTexture(imageNamed: "bird\(i)"))
+        }
+        
+        let walkAnimation = SKAction.animate(with:animation,timePerFrame: 0.2)
+        player.run(.repeatForever(walkAnimation))
+        
+        
+        
+        
         
         
         

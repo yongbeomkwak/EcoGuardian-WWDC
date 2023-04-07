@@ -19,6 +19,8 @@ struct Layer {
     
     static let bg:CGFloat = 0
     
+    static let player:CGFloat = 1
+    
     static let zMax:CGFloat = 10
     
 }
