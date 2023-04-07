@@ -8,15 +8,15 @@ import PackageDescription
 import AppleProductTypes
 
 let package = Package(
-    name: "E-Guardian",
+    name: "EcoGuardian",
     platforms: [
         .iOS("15.2")
     ],
     products: [
         .iOSApplication(
-            name: "E-Guardian",
+            name: "EcoGuardian",
             targets: ["AppModule"],
-            bundleIdentifier: "com.yongbeomkwak.E-Guardian",
+            bundleIdentifier: "com.yongbeomkwak.EcoGuardian",
             teamIdentifier: "28NL63HBTJ",
             displayVersion: "1.0",
             bundleVersion: "1",
@@ -37,7 +37,10 @@ let package = Package(
     targets: [
         .executableTarget(
             name: "AppModule",
-            path: "."
+            path: ".",
+            resources: [
+                .process("Resources")
+            ]
         )
     ]
 )

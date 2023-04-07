@@ -1,6 +1,6 @@
 //
 //  File.swift
-//  
+//
 //
 //  Created by yongbeomkwak on 2023/04/06.
 //
@@ -340,6 +340,9 @@ extension GameScene: SKPhysicsContactDelegate {
         if gameState == .playing {
             self.player.physicsBody?.velocity = CGVector(dx: 0, dy: 0) // 속도 리셋
             self.player.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 20))
+            
+            
+            self.run(SoundFx.wing)
         }
         
         

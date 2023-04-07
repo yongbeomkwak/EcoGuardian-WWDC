@@ -5,6 +5,7 @@
 //  Created by yongbeomkwak on 2023/04/04.
 //
 import Foundation
+import SpriteKit
 
 
 
@@ -46,6 +47,11 @@ struct Character {
     
 }
 
+struct SoundFx {
+    
+    static let wing = SKAction.playSoundFileNamed("wing.mp3", waitForCompletion: false)
+    
+}
 
 struct Conversation {
     
@@ -58,10 +64,5 @@ struct Conversation {
     static let villain2:[String] = ["인간들은 전기가 없으면 살 수 없지","전기 생산의 57%를 차지하는 화력발전은 우릴 더욱 많이 생산하지","한번 생긴 우리는 100년간 존재하지 누구도 우리를 막을 수 없어"]
     
     static let hero2:[String] = ["아니 우린할 수 있어","배출량과 흡수량이 균형을 이루면 더 이상 높아지지 않는다.","나무 한 그루 당 평균 48pounds의 이산화탄소를 흡수해","또한 대기전력을 뽑으면 나무를 년간 4.7그루에 나무를 심는 효과를 볼 수 있지!"]
-    
-
-    
-    
-    
-    
+     
 }
