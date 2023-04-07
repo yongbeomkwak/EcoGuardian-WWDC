@@ -8,36 +8,45 @@ struct ContentView: View {
     @StateObject var viewModel = ContentViewModel()
     
     var body: some View {
-        ZStack{
-            Image("BG")
-                .resizable()
-            
-            if viewModel.page == .talk1 {
-                ConversationView(isVillain: true,desriptions: Conversation.villain1,page: $viewModel.page)
-            }
-            
-            else if viewModel.page == .talk2 {
-                ConversationView(isVillain: false,desriptions: Conversation.hero1,page: $viewModel.page)
-            }
+        
+        
+        NavigationView {
+            ZStack{
+                
+                Image("BG")
+                    .resizable()
+                
+                if viewModel.page == .talk1 {
+                    ConversationView(isVillain: true,desriptions: Conversation.villain1,page: $viewModel.page)
+                }
+                
+                else if viewModel.page == .talk2 {
+                    ConversationView(isVillain: false,desriptions: Conversation.hero1,page: $viewModel.page)
+                }
 
-            else if viewModel.page == .talk3 {
-                ConversationView(isVillain: true, desriptions: Conversation.villain2, page: $viewModel.page)
-            }
-            else if viewModel.page == .talk4 {
-                ConversationView(isVillain: false, desriptions: Conversation.hero2, page: $viewModel.page)
-            }
-            
-            else if viewModel.page == .howToPlay {
+                else if viewModel.page == .talk3 {
+                    ConversationView(isVillain: true, desriptions: Conversation.villain2, page: $viewModel.page)
+                }
+                else if viewModel.page == .talk4 {
+                    ConversationView(isVillain: false, desriptions: Conversation.hero2, page: $viewModel.page)
+                }
+                
+                else if viewModel.page == .howToPlay {
+                    NavigationLink(destination: GameView(page: $viewModel.page)) {
+                        Text("Start")
+                    }
+                }
+                
+                
+               
+               
+                
                 
             }
-            
-            
-           
-           
-            
-            
+            .ignoresSafeArea()
         }
-        .ignoresSafeArea()
+        .statusBarHidden(true)
+        .navigationViewStyle(StackNavigationViewStyle())
         
     }
 }
@@ -53,21 +62,16 @@ struct ConversationView: View {
     var body: some View {
         
         VStack(spacing: 10){
-            
-            
-            Text("E-Guardian")
-                .font(.system(.largeTitle))
-                .bold()
-                .padding(.top,20)
-            
+
             
             ForEach(desriptions,id:\.self){ desription in
                 
                 Text(desription)
-                    .font(.title2)
+                    .font(.system(.title))
+                    .fontWeight(.medium)
+                    .padding(.top,10)
 
-                
-            }.padding(.top)
+            }
             
 
             
@@ -77,10 +81,10 @@ struct ConversationView: View {
                 Image("graph")
                     .resizable()
                     .scaledToFit()
-                    .frame(height: 250)
-                
-                
+                    .frame(height: UIScreen.height/4)
+            
             }
+    
             
             
             
@@ -163,7 +167,7 @@ struct ConversationView: View {
            
         
         }
-        .frame(width: UIScreen.width - 200, height:UIScreen.height / 2)
+        .frame(width: UIScreen.width - 200, height:UIScreen.height / 1.5)
         .padding(.bottom,50)
         .border(.white,width: 3)
         .background(Color.villonTextBgColor)        
