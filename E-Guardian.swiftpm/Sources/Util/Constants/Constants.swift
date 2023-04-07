@@ -25,7 +25,7 @@ struct Layer {
     
     static let player:CGFloat = 1
     
-    static let item:CGFloat = 1
+    static let item:CGFloat = 2
     
     static let zMax:CGFloat = 10
     

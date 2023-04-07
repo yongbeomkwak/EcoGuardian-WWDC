@@ -44,6 +44,7 @@ class GameScene: SKScene, ObservableObject{
         cameraNode.position.y = self.size.height / 2
         self.addChild(cameraNode)
         
+        physicsWorld.gravity = CGVector(dx: 0, dy: -9.8)
         self.physicsWorld.contactDelegate = self // 앱안에서 일어나는 충돌을 게임씬이 관리함
         createPlayer()
         createScore()
@@ -60,8 +61,16 @@ class GameScene: SKScene, ObservableObject{
       
         self.player.zRotation = .zero
         
-        if player.position.y > size.height - (size.height / 4.5) {
-            player.position.y = size.height - (size.height / 4.5)
+        if player.position.y > size.height - 60  {
+            player.position.y = size.height - 60
+        }
+        
+        if player.position.x > size.width - player.size.width {
+            player.position.x = size.width - player.size.width
+        }
+        
+        else if player.position.x < player.size.width {
+            player.position.x = player.size.width
         }
       
       
@@ -154,7 +163,7 @@ extension GameScene {
         player.physicsBody?.categoryBitMask = PhysicsCategory.player
         
         player.physicsBody?.contactTestBitMask = PhysicsCategory.land | PhysicsCategory.tree | PhysicsCategory.blub | PhysicsCategory.villian
-        player.physicsBody?.collisionBitMask = PhysicsCategory.land | PhysicsCategory.tree | PhysicsCategory.blub | PhysicsCategory.villian
+//        player.physicsBody?.collisionBitMask = PhysicsCategory.land | PhysicsCategory.tree | PhysicsCategory.blub | PhysicsCategory.villian
         player.physicsBody?.isDynamic = true
         player.physicsBody?.affectedByGravity = true
         
@@ -181,10 +190,7 @@ extension GameScene {
     
     @objc func makeTree() {
         
-        
-        
         let treeTexture = itemAtlas.textureNamed("tree")
-        print(treeTexture)
         
         let tree = SKSpriteNode(texture: treeTexture)
         
@@ -196,7 +202,7 @@ extension GameScene {
         tree.zPosition = Layer.item
         tree.name = "tree"
         tree.physicsBody = SKPhysicsBody(rectangleOf: tree.size)
-        tree.physicsBody?.isDynamic = true
+        tree.physicsBody?.isDynamic = false
         tree.physicsBody?.affectedByGravity = false
         tree.physicsBody?.categoryBitMask = PhysicsCategory.tree
         
@@ -267,7 +273,7 @@ extension GameScene {
         villain.zPosition = Layer.item
         villain.name = "villain"
         villain.physicsBody = SKPhysicsBody(rectangleOf: villain.size)
-        villain.physicsBody?.isDynamic = true
+        villain.physicsBody?.isDynamic = false
         villain.physicsBody?.affectedByGravity = false
         villain.physicsBody?.categoryBitMask = PhysicsCategory.villian
         villain.setScale(0.3)
@@ -373,15 +379,15 @@ extension GameScene: SKPhysicsContactDelegate {
                     
                 case PhysicsCategory.tree:
                     
-                    self.carbonPercent -= 4
+                    self.carbonPercent -= 15
                     
                 
                 case PhysicsCategory.blub:
-                    self.carbonPercent -= 8
+                    self.carbonPercent -= 20
                     
                     
                 case PhysicsCategory.villian:
-                    self.carbonPercent += 10
+                    self.carbonPercent += 5
                 
                     
                 default:
