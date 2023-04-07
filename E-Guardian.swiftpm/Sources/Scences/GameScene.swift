@@ -24,7 +24,11 @@ class GameScene: SKScene, ObservableObject{
     let birdAtlas = SKTextureAtlas(named: "Bird")
     let itemAtlas = SKTextureAtlas(named: "Items")
     
-    @Published var carbonPercent:Int = 100
+    @Published var carbonPercent:Int = 100 {
+        didSet {
+                    scoreLabel.text = "\(carbonPercent)%"
+        }
+    }
     
     override func didMove(to view: SKView) {
         
@@ -40,6 +44,7 @@ class GameScene: SKScene, ObservableObject{
         cameraNode.position.y = self.size.height / 2
         self.addChild(cameraNode)
         
+        self.physicsWorld.contactDelegate = self // 앱안에서 일어나는 충돌을 게임씬이 관리함
         createPlayer()
         createScore()
         
@@ -193,7 +198,7 @@ extension GameScene {
         tree.physicsBody = SKPhysicsBody(rectangleOf: tree.size)
         tree.physicsBody?.isDynamic = true
         tree.physicsBody?.affectedByGravity = false
-        tree.physicsBody?.contactTestBitMask = PhysicsCategory.tree
+        tree.physicsBody?.categoryBitMask = PhysicsCategory.tree
         
         tree.setScale(0.5)
         
@@ -229,7 +234,7 @@ extension GameScene {
         bulb.physicsBody = SKPhysicsBody(rectangleOf: bulb.size)
         bulb.physicsBody?.isDynamic = false
         bulb.physicsBody?.affectedByGravity = false
-        bulb.physicsBody?.contactTestBitMask = PhysicsCategory.blub
+        bulb.physicsBody?.categoryBitMask = PhysicsCategory.blub
         
         bulb.setScale(0.5)
         
@@ -264,7 +269,7 @@ extension GameScene {
         villain.physicsBody = SKPhysicsBody(rectangleOf: villain.size)
         villain.physicsBody?.isDynamic = true
         villain.physicsBody?.affectedByGravity = false
-        villain.physicsBody?.contactTestBitMask = PhysicsCategory.villian
+        villain.physicsBody?.categoryBitMask = PhysicsCategory.villian
         villain.setScale(0.3)
         
         addChild(villain)
@@ -334,8 +339,11 @@ extension GameScene: SKPhysicsContactDelegate {
     func didBegin(_ contact: SKPhysicsContact) {
         var  collideBody = SKPhysicsBody()
                 
+        if contact.bodyB.categoryBitMask != PhysicsCategory.player && contact.bodyA.categoryBitMask != PhysicsCategory.player {
+            return
+        }
                 
-                //비트마스크 큰게 플레이어
+                //비트마스크 작은 플레이어
                 if contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask {
                     collideBody = contact.bodyB
                     
@@ -347,6 +355,7 @@ extension GameScene: SKPhysicsContactDelegate {
                 
             let collideType = collideBody.categoryBitMask
                 
+                print(collideType)
                 
                 switch collideType {
                     
@@ -364,11 +373,13 @@ extension GameScene: SKPhysicsContactDelegate {
                 
                     
                 default:
+                    print("DEFAULT")
                     break
                     
                     
                 }
-        
+            
+        self.carbonPercent  = self.carbonPercent > 100 ? 100 :self.carbonPercent
             self.carbonPercent  = self.carbonPercent < 0 ? 0 :self.carbonPercent
         
        
