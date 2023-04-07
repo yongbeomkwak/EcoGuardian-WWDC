@@ -12,6 +12,8 @@ class GameScene: SKScene, ObservableObject{
 
     var player = SKSpriteNode()
     
+    var scoreLabel = SKLabelNode()
+    @Published var pulltionPercent:Int = 100
     
     override func didMove(to view: SKView) {
         
@@ -22,7 +24,7 @@ class GameScene: SKScene, ObservableObject{
         fetchBackground(landName:"desrtLand")
         
         createPlayer()
-        
+        createScore()
     }
     
 }
@@ -42,7 +44,7 @@ extension GameScene {
         let landWidth = landTexture.size().width
         let landRepeatNum = Int(ceil(width/landWidth))
         
-        
+       
         for i in 0...landRepeatNum{
            
             let land = SKSpriteNode(texture: landTexture)
@@ -80,6 +82,19 @@ extension GameScene {
         
     }
     
+    func createScore() {
+        scoreLabel = SKLabelNode()
+    
+        scoreLabel.fontName = "AppleSDGothicNeo-Regular"
+        scoreLabel.fontSize = 20
+        scoreLabel.fontColor = .white
+        scoreLabel.position = CGPoint(x: self.size.width/2, y: self.size.height - 60)
+        scoreLabel.zPosition = Layer.zMax
+        scoreLabel.horizontalAlignmentMode = .center
+        scoreLabel.text = "\(self.pulltionPercent)%"
+        addChild(scoreLabel)
+    }
+    
     func createPlayer() {
         let atlas = SKTextureAtlas(named: "Bird")
         
@@ -92,7 +107,7 @@ extension GameScene {
         
         
         player = SKSpriteNode(texture: atlas.textureNamed("bird1"))
-        player.position = CGPoint(x:landTexture.size().width/3 , y: landTexture.size().height - 30)
+        player.position = CGPoint(x:self.size.width/2 , y: self.size.height/2)
         player.zPosition = Layer.player
         
         player.physicsBody = SKPhysicsBody(circleOfRadius: player.size.height/2)
@@ -103,7 +118,7 @@ extension GameScene {
         player.physicsBody?.isDynamic = false
         player.physicsBody?.affectedByGravity = true
 
-        player.setScale(0.5)
+//        player.setScale(0.5)
         
         self.addChild(player)
         var animation = [SKTexture]()
@@ -123,6 +138,8 @@ extension GameScene {
         
         
     }
+    
+    
     
     
 }

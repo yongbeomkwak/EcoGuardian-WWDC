@@ -72,6 +72,17 @@ struct ConversationView: View {
                     .padding(.top,10)
 
             }
+//            .onAppear{
+//                for family in UIFont.familyNames {
+//                    print(family)
+//
+//                    for names in UIFont.fontNames(forFamilyName: family) {
+//
+//                        print("== \(names)")
+//
+//                    }
+//                }
+//            }
             
 
             
@@ -180,14 +191,4 @@ struct ConversationView: View {
     
 }
 
-//                .onAppear{
-//                    for family in UIFont.familyNames {
-//                        print(family)
-//
-//                        for names in UIFont.fontNames(forFamilyName: family) {
-//
-//                            print("== \(names)")
-//
-//                        }
-//                    }
-//                }
+              
