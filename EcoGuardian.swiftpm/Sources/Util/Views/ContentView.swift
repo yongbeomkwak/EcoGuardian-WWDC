@@ -18,18 +18,19 @@ struct ContentView: View {
                 
                 HStack {
                     
+                    ProfileImage(isVillain: true)
                     
                     
-                    Image("graph")
-                        .resizable()
-                        .frame(width:200,height: 200)
-                        .scaledToFit()
-                        //.padding()
-                        //.foregroundColor(.white)
-                        //.font(.custom(CustomFont.regular, size: 30))
-                        //.background(Color.bubbleColor)
-                        .clipShape(ChatBubble())
-                    Spacer()
+//                    Image("graph")
+//                        .resizable()
+//                        .frame(width:200,height: 200)
+//                        .scaledToFit()
+//                        //.padding()
+//                        //.foregroundColor(.white)
+//                        //.font(.custom(CustomFont.regular, size: 30))
+//                        //.background(Color.bubbleColor)
+//                        .clipShape(ChatBubble())
+//                    Spacer()
                 }
                 
                 
@@ -111,6 +112,32 @@ struct ChatBubble: Shape {
 }
 
 
+
+struct ProfileImage : View {
+    
+    var isVillain:Bool
+    
+    var body: some View {
+        
+        
+        Image(isVillain ? "villain" : "speakBear")
+            .resizable()
+            .frame(width: 100,height: 100)
+            .padding()
+            .scaledToFit()
+            .background(.white)
+            .clipShape(Circle())
+           // .overlay(Circle().stroke(Color.bubbleColor,lineWidth: 4))
+        
+        
+        
+    }
+    
+    
+    
+    
+    
+}
 
 struct ConversationView: View {
     

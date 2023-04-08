@@ -7,17 +7,25 @@
 
 import Foundation
 import SwiftUI
-
+import SpriteKit
 
 struct IntroView: View {
     
+    var scene =  IntroScene()
  
     var body: some View {
      
         NavigationView {
             ZStack {
                 
-                LinearGradient(colors: [Color(hex: 0x545353),Color(hex: 0x7C7171)], startPoint: .top, endPoint: .bottom)
+                SpriteView(scene: scene)
+                    .navigationBarHidden(true)
+                    .navigationBarBackButtonHidden(true)
+                    .ignoresSafeArea()
+                
+                
+//                LinearGradient(colors: [Color(hex: 0x545353),Color(hex: 0x7C7171)], startPoint: .top, endPoint: .bottom)
+                    
                 
                 VStack{
                     Image("earth")
@@ -30,6 +38,9 @@ struct IntroView: View {
                         SaveButton()
                     }
                 }
+                
+                
+                
                 
                 
             

@@ -11,7 +11,6 @@ struct MyApp: App {
         WindowGroup {
             
             IntroView()
-            //ContentView()
         }
     }
 }
