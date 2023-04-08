@@ -17,11 +17,17 @@ struct ContentView: View {
                     .resizable()
                 
                 HStack {
-                    Text("Hello World")
-                        .padding()
-                        .foregroundColor(.white)
-                        .font(.custom(CustomFont.regular, size: 30))
-                        .background(Color.bubbleColor)
+                    
+                    
+                    
+                    Image("graph")
+                        .resizable()
+                        .frame(width:200,height: 200)
+                        .scaledToFit()
+                        //.padding()
+                        //.foregroundColor(.white)
+                        //.font(.custom(CustomFont.regular, size: 30))
+                        //.background(Color.bubbleColor)
                         .clipShape(ChatBubble())
                     Spacer()
                 }
@@ -103,6 +109,7 @@ struct ChatBubble: Shape {
    
 
 }
+
 
 
 struct ConversationView: View {
