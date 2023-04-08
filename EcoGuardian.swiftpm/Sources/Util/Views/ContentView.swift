@@ -47,7 +47,7 @@ struct ContentView: View {
         }
         .statusBarHidden(true)
         .navigationViewStyle(StackNavigationViewStyle())
-        
+        .navigationBarBackButtonHidden(true)
     }
 }
 
@@ -192,9 +192,8 @@ struct ConversationView: View {
 }
 
               
-
-
-/*
- NeoDunggeunmoPro-Regular
- JetBrainsMono-Bold
- */
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+       ContentView()
+    }
+}
