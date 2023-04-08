@@ -35,6 +35,8 @@ struct Layer {
 struct CustomFont {
     
     static let bold = "Pretendard-Bold"
+    static let light = "Pretendard-Light"
+    static let regular = "Pretendard-Regular"
    
     
 }

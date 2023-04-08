@@ -19,5 +19,6 @@ extension Color {
     static let villonColor = Color(hex: 0x668473)
     static let villonTextBgColor = Color(hex:0xFFFFFF,alpha: 0.76)
     static let heroTextBgColor = Color(hex: 0xD7FF73,alpha: 0.4)
+    static let bubbleColor = Color(UIColor.systemBlue)
     
 }
