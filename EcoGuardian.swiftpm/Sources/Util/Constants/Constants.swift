@@ -65,7 +65,7 @@ struct Message {
 struct Conversation {
 
     
-    static let villain1:[Message] = [Message(isImage: false, content: "오늘도 지구는 우리 탄소들이 살기 좋게 따뜻해지고 있군."), Message(isImage:false,content:"아래 그래프를 봐"),Message(isImage: true, content: "graph"),Message(isImage:false,content:"우리는 1958년도 315ppm 에서 202년도 419ppm인 33% 증가 했어"),Message(isImage:false,content:"이 속도는 더욱 가속될꺼야!")]
+    static let villain1:[Message] = [Message(isImage: false, content: "오늘도 지구는 우리 탄소들이 살기 좋게 따뜻해지고 있군."), Message(isImage:false,content:"아래 그래프를 봐"),Message(isImage: true, content: "graph"),Message(isImage:false,content:"우리는 1958년도 315ppm 에서 2020년도 419ppm인 33% 증가 했어"),Message(isImage:false,content:"이 속도는 더욱 가속될꺼야!")]
 
     
     static let hero1:[Message] = [Message(isImage: false, content: "더 이상 탄소들이 활게치게 간과할 수 없어"),Message(isImage: false, content: "탄소들은 온실효과의 주 원인이야"),Message(isImage: false, content: "온실효과는 온실가스가 담요처럼 지구를 덮어서 ,지구의 온도를 높이는 효과야"),Message(isImage: false, content: "지구의 온도가 1도 오르면  육상생물 10% 멸종 위기"),Message(isImage: false, content: "지구의 온도가 2도 오르면 ,해수면 7m 상승 , 북극 생물 40% 멸종 위기 에 봉착해")]
@@ -74,5 +74,14 @@ struct Conversation {
     static let villain2:[Message] = [Message(isImage: false, content: "인간들은 전기가 없으면 살 수 없지"),Message(isImage: false, content: "전기 생산의 57%를 차지하는 화력발전은 우릴 더욱 많이 생산하지"),Message(isImage: false, content: "한번 생긴 우리는 100년간 존재하지 누구도 우리를 막을 수 없어")]
     
     static let hero2:[Message] = [Message(isImage: false, content: "아니 우린할 수 있어"),Message(isImage: false, content: "배출량과 흡수량이 균형을 이루면 더 이상 높아지지 않는다."),Message(isImage: false, content: "나무 한 그루 당 평균 48pounds의 이산화탄소를 흡수해"),Message(isImage: false, content: "또한 대기전력을 뽑으면 나무를 년간 4.7그루에 나무를 심는 효과를 볼 수 있지!")]
+    
+    static let howtoPlay:[Message] = [Message(isImage: false, content: "우리의 목표는 대기 중 탄소농도를 0%로 만들어 탄소중립을 이루는게 목표야"),Message(isImage: false, content: "탄소 농도는 밑의 온도계를 이용해서 파약할 수 있어"),Message(isImage: true, content: "100"),
+        Message(isImage: false, content: "탄소 농도는 나무와 꺼진 전구를 먹으면 낮출 수 있어\n 나무는 10%를 꺼진 전구는 20%를 낮출 수 있어"),Message(isImage: true, content: "bulb"),Message(isImage: true, content: "tree"),
+    Message(isImage: false, content: "탄소 구름은 피해야되 만약 먹게된다면 탄소 농도가 10% 증가할꺼야"),Message(isImage: true, content: "villain"),
+        Message(isImage: false, content: "탄소 구름은 되도로 피해야되 일정 수준을 넘은면 게임 오버가 될 수 있어.")
+                                      
+                                      
+                                      
+    ]
      
 }

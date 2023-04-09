@@ -5,6 +5,7 @@ import SwiftUI
 
 
 struct ContentView: View {
+    
     @StateObject var viewModel = ContentViewModel()
     
     var body: some View {
@@ -34,6 +35,16 @@ struct ContentView: View {
                     else if viewModel.page == .talk4 {
                         ConversationView(desriptions: Conversation.hero2,isVillain: false)
                     }
+                    else if viewModel.page == .howToPlay {
+                        ConversationView(desriptions: Conversation.howtoPlay, isVillain: false)
+                    }
+                    else if viewModel.page == .game {
+                       
+                        NavigationLink(destination: GameView(page: $viewModel.page)) {
+                                    Text("Hello")
+                        }
+                    }
+                    
                     
                 }
                 .transition(.opacity.animation(.easeIn))
@@ -55,9 +66,7 @@ struct ContentView: View {
 //                }
 //
 //                else if viewModel.page == .howToPlay {
-//                    NavigationLink(destination: GameView(page: $viewModel.page)) {
-//                        Text("Start")
-//                    }
+//
 //                }
                 
                 
@@ -74,10 +83,16 @@ struct ContentView: View {
                         case .talk4:
                         viewModel.page = .howToPlay
                         case .howToPlay:
+                        viewModel.page = .game
+                        
+                        default:
                             print("Hello")
+                        
                         }
                 } label: {
-                    Text("Hello")
+                    
+                    Text(viewModel.page.buttonTitle)
+                    
                 }
                 .frame(maxHeight:.infinity,alignment:.bottom)
             
@@ -170,7 +185,7 @@ struct ConversationView: View {
 
     var desriptions:[Message]
     
-    let offset:CGFloat = -30
+    let offset:CGFloat = -50
     
     var isVillain:Bool
     
@@ -185,19 +200,36 @@ struct ConversationView: View {
                 
                 HStack{
                     ProfileImage(isVillain: isVillain)
-                        .padding(.leading)
-                        .offset(x:0,y: desription.isImage ? -offset + 50 : 0)
+                        .padding(.leading,30)
+                        .offset(x:0,y: desription.content == "graph" ? -offset + 50 : 0)
                     
                     
                     
                     
                     if desription.isImage {
-                        Image(desription.content)
-                            .resizable()
-                            .frame(width:200,height: 200)
-                            .scaledToFit()
-                            .clipShape(ChatBubble())
-                            .offset(x:0,y: offset)
+                        
+                        if(desription.content == "graph")
+                        {
+                            Image(desription.content)
+                                .resizable()
+                                .frame(width:300,height: 300)
+                                .scaledToFit()
+                                .clipShape(ChatBubble())
+                                .offset(x:0,y: offset)
+                        }
+                        
+                        else {
+                            Image(desription.content)
+                                .resizable()
+                                .frame(width:50,height: 50)
+                                .scaledToFit()
+                                .padding()
+                                .background(Color.bubbleColor)
+                                .clipShape(ChatBubble())
+                                .offset(x:0,y: offset)
+                        }
+                        
+                      
                     }
                     
                     else {
