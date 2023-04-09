@@ -415,11 +415,11 @@ extension GameScene: SKPhysicsContactDelegate {
                 case PhysicsCategory.tree:
                     
                     self.carbonPercent -= 10
-                    
+                    self.run(SoundFx.point)
                 
                 case PhysicsCategory.blub:
                     self.carbonPercent -= 20
-                    
+                    self.run(SoundFx.point)
                     
                 case PhysicsCategory.villian:
                     self.carbonPercent += 10
