@@ -73,8 +73,6 @@ class GameScene: SKScene, ObservableObject{
             player.position.x = player.size.width
         }
         
-        
-        print(prev,carbonPercent)
         if prev != carbonPercent {
             let texture = tempertureAtlas.textureNamed("\(carbonPercent)")
             tempertureNode.removeFromParent()

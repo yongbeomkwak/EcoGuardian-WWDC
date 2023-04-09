@@ -41,7 +41,11 @@ struct ContentView: View {
                     else if viewModel.page == .game {
                        
                         NavigationLink(destination: GameView(page: $viewModel.page)) {
-                                    Text("Hello")
+                            Text("지구를 구하러가자!")
+                                .font(.custom(CustomFont.regular, size: 20))
+                                .foregroundColor(Color.white)
+                                .padding()
+                                .background(Color.bubbleColor.cornerRadius(10).shadow(radius: 10))
                         }
                     }
                     
@@ -70,31 +74,39 @@ struct ContentView: View {
 //                }
                 
                 
-               
-                Button {
-                    switch viewModel.page {
-                                            
-                        case .talk1:
-                        viewModel.page = .talk2
-                        case .talk2:
-                        viewModel.page = .talk3
-                        case .talk3:
-                        viewModel.page = .talk4
-                        case .talk4:
-                        viewModel.page = .howToPlay
-                        case .howToPlay:
-                        viewModel.page = .game
+                if viewModel.page != .game {
+                    Button {
+                        switch viewModel.page {
+                                                
+                            case .talk1:
+                            viewModel.page = .talk2
+                            case .talk2:
+                            viewModel.page = .talk3
+                            case .talk3:
+                            viewModel.page = .talk4
+                            case .talk4:
+                            viewModel.page = .howToPlay
+                            case .howToPlay:
+                            viewModel.page = .game
+                            
+                            default:
+                                print("Hello")
+                            
+                            }
+                    } label: {
                         
-                        default:
-                            print("Hello")
+                        Text(viewModel.page.buttonTitle)
+                            .font(.custom(CustomFont.regular, size: 20))
+                            .foregroundColor(Color.white)
+                            .padding()
+                            .background(Color.bubbleColor.cornerRadius(10).shadow(radius: 10))
+                            
                         
-                        }
-                } label: {
-                    
-                    Text(viewModel.page.buttonTitle)
-                    
+                    }
+                    .frame(maxHeight:.infinity,alignment:.bottom)
+                    .padding(.bottom,70)
                 }
-                .frame(maxHeight:.infinity,alignment:.bottom)
+                
             
                 
 
