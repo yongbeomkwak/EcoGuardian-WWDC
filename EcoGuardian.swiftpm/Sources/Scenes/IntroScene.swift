@@ -24,6 +24,8 @@ class IntroScene:SKScene{
         randomGenerate()
         randomGenerate()
         randomGenerate()
+        randomGenerate()
+        randomGenerate()
         
         //self.backgroundColor    = .clear
             

@@ -12,7 +12,7 @@ class GameScene: SKScene, ObservableObject{
 
     var player = SKSpriteNode()
     let cameraNode = SKCameraNode()
-    var scoreLabel = SKLabelNode()
+    var tempertureNode = SKSpriteNode()
     
     var generateTimer1 = Timer()
     var generateTimer2 = Timer()
@@ -20,15 +20,16 @@ class GameScene: SKScene, ObservableObject{
     var touchesBegan = false
     var gameState = GameState.playing
     
+    
+    
     let bgAtlas = SKTextureAtlas(named: "BG")
     let birdAtlas = SKTextureAtlas(named: "Bird")
     let itemAtlas = SKTextureAtlas(named: "Items")
+    let tempertureAtlas = SKTextureAtlas(named: "temperture")
     
-    @Published var carbonPercent:Int = 100 {
-        didSet {
-                    scoreLabel.text = "\(carbonPercent)%"
-        }
-    }
+    @Published var carbonPercent:Int = 100
+    var prev:Int = 100
+    var temperturePosition = CGPoint()
     
     override func didMove(to view: SKView) {
         
@@ -47,7 +48,7 @@ class GameScene: SKScene, ObservableObject{
         physicsWorld.gravity = CGVector(dx: 0, dy: -9.8)
         self.physicsWorld.contactDelegate = self // 앱안에서 일어나는 충돌을 게임씬이 관리함
         createPlayer()
-        createScore()
+        createTemperture()
         
         generateTimer1 = .scheduledTimer(timeInterval: 5, target: self, selector: #selector(makeTree), userInfo: nil, repeats: true)
         
@@ -72,6 +73,23 @@ class GameScene: SKScene, ObservableObject{
         else if player.position.x < player.size.width {
             player.position.x = player.size.width
         }
+        
+        
+        print(prev,carbonPercent)
+        if prev != carbonPercent {
+            let texture = tempertureAtlas.textureNamed("\(carbonPercent)")
+            tempertureNode.removeFromParent()
+            tempertureNode = SKSpriteNode(texture: texture)
+            
+            tempertureNode.position = temperturePosition
+            tempertureNode.setScale(0.5)
+            
+            addChild(tempertureNode)
+            prev = carbonPercent
+        }
+        
+        
+       
       
       
 
@@ -132,16 +150,19 @@ extension GameScene {
         
     }
     
-    func createScore() {
+    func createTemperture() {
+        
+        let texture = tempertureAtlas.textureNamed("100")
+        tempertureNode = SKSpriteNode(texture: texture)
+        temperturePosition = CGPoint(x: self.size.width/2, y: self.size.height - texture.size().height + 20)
+        
+        tempertureNode.position = temperturePosition
+        tempertureNode.setScale(0.5)
+        
     
-        scoreLabel.fontName = "AppleSDGothicNeo-Regular"
-        scoreLabel.fontSize = 20
-        scoreLabel.fontColor = .white
-        scoreLabel.position = CGPoint(x: self.size.width/2, y: self.size.height - 60)
-        scoreLabel.zPosition = Layer.zMax
-        scoreLabel.horizontalAlignmentMode = .center
-        scoreLabel.text = "\(self.carbonPercent)%"
-        addChild(scoreLabel)
+        
+        tempertureNode.zPosition = Layer.zMax
+        addChild(tempertureNode)
     }
     
     func createPlayer() {
@@ -382,7 +403,7 @@ extension GameScene: SKPhysicsContactDelegate {
                     
                 case PhysicsCategory.tree:
                     
-                    self.carbonPercent -= 15
+                    self.carbonPercent -= 10
                     
                 
                 case PhysicsCategory.blub:
@@ -390,7 +411,7 @@ extension GameScene: SKPhysicsContactDelegate {
                     
                     
                 case PhysicsCategory.villian:
-                    self.carbonPercent += 5
+                    self.carbonPercent += 10
                 
                     
                 default:

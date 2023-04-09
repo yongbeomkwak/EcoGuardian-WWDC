@@ -12,7 +12,7 @@ import SpriteKit
 struct GameView: View {
     
     
-    @Binding var page:Page
+  //  @Binding var page:Page
     
     @StateObject private var gamescene = GameScene()
  
