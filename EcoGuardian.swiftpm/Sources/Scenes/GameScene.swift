@@ -35,7 +35,6 @@ class GameScene: SKScene, ObservableObject{
         
         self.size = CGSize(width: 600, height: 500)
         scene?.scaleMode = .aspectFill
-        print("Game Start")
         
         fetchBackground(landName:"desrtLand")
         
@@ -154,7 +153,7 @@ extension GameScene {
         
         let texture = tempertureAtlas.textureNamed("100")
         tempertureNode = SKSpriteNode(texture: texture)
-        temperturePosition = CGPoint(x: self.size.width/2, y: self.size.height - texture.size().height + 20)
+        temperturePosition = CGPoint(x: self.size.width/2, y: self.size.height - texture.size().height/2)
         
         tempertureNode.position = temperturePosition
         tempertureNode.setScale(0.5)
