@@ -34,7 +34,7 @@ struct IntroView: View {
                         .scaledToFit()
                         .padding(.bottom,safeArea.bottom)
 
-                    NavigationLink(destination: GameView()) {
+                    NavigationLink(destination: ContentView()) {
                         SaveButton()
                     }
                 }

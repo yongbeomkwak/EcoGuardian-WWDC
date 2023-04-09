@@ -65,7 +65,7 @@ struct Message {
 struct Conversation {
 
     
-    static let villain1:[Message] = [Message(isImage: false, content: "오늘도 지구는 우리 탄소들이 살기 좋게 따뜻해지고 있군."), Message(isImage:false,content:"아래 그래프를 봐"),Message(isImage:false,content:"우리는 1958년도 315ppm 에서 202년도 419ppm인 33% 증가 했어"),Message(isImage:false,content:"이 속도는 더욱 가속될꺼야!")]
+    static let villain1:[Message] = [Message(isImage: false, content: "오늘도 지구는 우리 탄소들이 살기 좋게 따뜻해지고 있군."), Message(isImage:false,content:"아래 그래프를 봐"),Message(isImage: true, content: "graph"),Message(isImage:false,content:"우리는 1958년도 315ppm 에서 202년도 419ppm인 33% 증가 했어"),Message(isImage:false,content:"이 속도는 더욱 가속될꺼야!")]
 
     
     static let hero1:[Message] = [Message(isImage: false, content: "더 이상 탄소들이 활게치게 간과할 수 없어"),Message(isImage: false, content: "탄소들은 온실효과의 주 원인이야"),Message(isImage: false, content: "온실효과는 온실가스가 담요처럼 지구를 덮어서 ,지구의 온도를 높이는 효과야"),Message(isImage: false, content: "지구의 온도가 1도 오르면  육상생물 10% 멸종 위기"),Message(isImage: false, content: "지구의 온도가 2도 오르면 ,해수면 7m 상승 , 북극 생물 40% 멸종 위기 에 봉착해")]
