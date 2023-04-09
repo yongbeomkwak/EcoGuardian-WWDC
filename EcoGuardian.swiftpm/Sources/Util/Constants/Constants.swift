@@ -53,6 +53,8 @@ struct SoundFx {
     
     static let wing = SKAction.playSoundFileNamed("wing.mp3", waitForCompletion: false)
     
+    static let cough = SKAction.playSoundFileNamed("cough.mp3", waitForCompletion: false)
+    
 }
 
 struct Message {

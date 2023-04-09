@@ -28,6 +28,8 @@ class GameScene: SKScene, ObservableObject{
     let tempertureAtlas = SKTextureAtlas(named: "temperture")
     
     @Published var carbonPercent:Int = 100
+    @Published var isGameClear:Bool = false
+    
     var prev:Int = 100
     var temperturePosition = CGPoint()
     
@@ -83,6 +85,10 @@ class GameScene: SKScene, ObservableObject{
             
             addChild(tempertureNode)
             prev = carbonPercent
+        }
+        
+        if carbonPercent == .zero {
+            gameClear()
         }
         
         
@@ -349,6 +355,14 @@ extension GameScene {
         object.removeFromParent()
     }
     
+    func gameClear(){
+        generateTimer1.invalidate()
+        generateTimer2.invalidate()
+        generateTimer3.invalidate()
+        player.removeFromParent()
+        isGameClear = true
+    }
+    
 }
 
 extension GameScene: SKPhysicsContactDelegate {
@@ -409,6 +423,7 @@ extension GameScene: SKPhysicsContactDelegate {
                     
                 case PhysicsCategory.villian:
                     self.carbonPercent += 10
+                    self.run(SoundFx.cough)
                 
                     
                 default:

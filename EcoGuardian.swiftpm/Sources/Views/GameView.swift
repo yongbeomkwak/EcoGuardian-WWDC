@@ -16,18 +16,36 @@ struct GameView: View {
     
     @StateObject private var gamescene = GameScene()
  
+    
     var body: some View {
      
         ZStack{
             
-            SpriteView(scene: gamescene)
-                    .navigationBarBackButtonHidden(true)
-                    .navigationBarHidden(true)
-                    .ignoresSafeArea()
+            if gamescene.isGameClear {
+                NavigationLink(destination: ContentView()) {
+                    Text("Return")
+                }
+            }
+          
+            
+            else {
+                
+                SpriteView(scene: gamescene)
+                        .navigationBarBackButtonHidden(true)
+                        .navigationBarHidden(true)
+                        .ignoresSafeArea()
+                
+            }
+        
             
             
             
         }
+        .navigationBarBackButtonHidden(true)
+        .navigationBarHidden(true)
+        .ignoresSafeArea()
+        
+        
         
         
     }
