@@ -13,6 +13,7 @@ class GameScene: SKScene, ObservableObject{
     var player = SKSpriteNode()
     let cameraNode = SKCameraNode()
     var tempertureNode = SKSpriteNode()
+    var bgmPlayer = SKAudioNode()
     
     var generateTimer1 = Timer()
     var generateTimer2 = Timer()
@@ -51,11 +52,17 @@ class GameScene: SKScene, ObservableObject{
         createPlayer()
         createTemperture()
         
+        bgmPlayer = SKAudioNode(fileNamed: "bgm.mp3")
+        bgmPlayer.autoplayLooped = true
+        self.addChild(bgmPlayer)
+        
         generateTimer1 = .scheduledTimer(timeInterval: 5, target: self, selector: #selector(makeTree), userInfo: nil, repeats: true)
         
         generateTimer2 = .scheduledTimer(timeInterval: 8, target: self, selector: #selector(makeBulb), userInfo: nil, repeats: true)
         
         generateTimer3 = .scheduledTimer(timeInterval: 2, target: self, selector: #selector(makeVillain), userInfo: nil, repeats: true)
+        
+        
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -360,6 +367,7 @@ extension GameScene {
         generateTimer2.invalidate()
         generateTimer3.invalidate()
         player.removeFromParent()
+        self.bgmPlayer.run(.stop())
         isGameClear = true
     }
     
