@@ -7,6 +7,7 @@
 
 import Foundation
 import SpriteKit
+import CoreMotion
 
 class GameScene: SKScene, ObservableObject{
 
@@ -21,7 +22,7 @@ class GameScene: SKScene, ObservableObject{
     var generateTimer3 = Timer()
     var touchesBegan = false
     var gameState = GameState.playing
-    
+    var motionManager = CMMotionManager()
     
     
     let bgAtlas = SKTextureAtlas(named: "BG")
