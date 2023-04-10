@@ -67,7 +67,6 @@ class GameScene: SKScene, ObservableObject{
     }
     
     override func update(_ currentTime: TimeInterval) {
-        let rotation = self.player.zRotation
       
         self.player.zRotation = .zero
         
@@ -116,7 +115,9 @@ extension GameScene {
         
         
         let landTexture = bgAtlas.textureNamed(landName)
-        let bgTexture = bgAtlas.textureNamed("tmpBG")
+        let bgTexture = bgAtlas.textureNamed("factory")
+        
+        print("BGT \(bgTexture)")
         
         let width = self.size.width
         let height = self.size.height
@@ -162,8 +163,10 @@ extension GameScene {
         for i in 0...bgRepeatNum {
             backgroundNode = SKSpriteNode(texture: bgTexture)
             
-            backgroundNode.position = CGPoint(x: CGFloat(i)*bgWidth, y: height/2)
+            backgroundNode.position = CGPoint(x: CGFloat(i)*bgWidth, y: height/1.6)
             backgroundNode.zPosition = Layer.bg
+            
+            
             
             addChild(backgroundNode)
             
