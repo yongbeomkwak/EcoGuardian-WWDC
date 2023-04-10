@@ -17,26 +17,26 @@ struct ContentView: View {
                 Image("BG")
                     .resizable()
                 
-                
+              
                 Group{
                     if viewModel.page == .talk1 {
-                        ConversationView(desriptions: Conversation.villain1,isVillain: true)           
+                        ConversationView(desriptions: Conversation.villain1,isVillain: true,page:$viewModel.page)
                     }
                     
                     else if viewModel.page == .talk2 {
-                        ConversationView(desriptions: Conversation.hero1,isVillain: false)
+                        ConversationView(desriptions: Conversation.hero1,isVillain: false,page:$viewModel.page)
                             
                     }
                     
                     else if viewModel.page == .talk3 {
-                        ConversationView(desriptions: Conversation.villain2,isVillain: true)
+                        ConversationView(desriptions: Conversation.villain2,isVillain: true,page:$viewModel.page)
                     }
                     
                     else if viewModel.page == .talk4 {
-                        ConversationView(desriptions: Conversation.hero2,isVillain: false)
+                        ConversationView(desriptions: Conversation.hero2,isVillain: false,page:$viewModel.page)
                     }
                     else if viewModel.page == .howToPlay {
-                        ConversationView(desriptions: Conversation.howtoPlay, isVillain: false)
+                        HowToPlayView(desriptions: Conversation.howtoPlay, page:$viewModel.page)
                     }
                     else if viewModel.page == .game {
                        
@@ -53,73 +53,9 @@ struct ContentView: View {
                 }
                 .transition(.opacity.animation(.easeIn))
                 .animation(.easeIn,value:viewModel.page)
-                
-                
-                            
-               
 
-//                else if viewModel.page == .talk2 {
-//                    ConversationView(isVillain: false,desriptions: Conversation.hero1,page: $viewModel.page)
-//                }
-//
-//                else if viewModel.page == .talk3 {
-//                    ConversationView(isVillain: true, desriptions: Conversation.villain2, page: $viewModel.page)
-//                }
-//                else if viewModel.page == .talk4 {
-//                    ConversationView(isVillain: false, desriptions: Conversation.hero2, page: $viewModel.page)
-//                }
-//
-//                else if viewModel.page == .howToPlay {
-//
-//                }
                 
                 
-                if viewModel.page != .game {
-                    Button {
-                        switch viewModel.page {
-                                                
-                            case .talk1:
-                            viewModel.page = .talk2
-                            case .talk2:
-                            viewModel.page = .talk3
-                            case .talk3:
-                            viewModel.page = .talk4
-                            case .talk4:
-                            viewModel.page = .howToPlay
-                            case .howToPlay:
-                            viewModel.page = .game
-                            
-                            default:
-                                print("Hello")
-                            
-                            }
-                    } label: {
-                        
-                        HStack {
-                            Text(viewModel.page.buttonTitle)
-                                .font(.custom(CustomFont.regular, size: 20))
-                              
-                            
-                            Image(systemName: "play.fill")
-                              
-                            
-                        }
-                        
-//                        .foregroundColor(Color.white)
-//                        .padding()
-//                        .background(Color.bubbleColor.cornerRadius(10).shadow(radius: 10))
-                            
-                        
-                    }
-                    .buttonStyle(.borderedProminent)
-                    .foregroundColor(.white)
-                    .frame(maxHeight:.infinity,alignment:.bottom)
-                    .padding(.bottom,70)
-                }
-                
-            
-                
-
                
                 
                 
@@ -186,7 +122,7 @@ struct ProfileImage : View {
         Image(isVillain ? "villain" : "speakBird")
             .resizable()
             .scaledToFit()
-            .frame(width: 35,height: 35)
+            .frame(width: 150,height: 150)
             .padding(.all,5)
             .background(isVillain ? Color(hex: 0xD9D9D9) : Color(hex: 0x65E05B))
             .clipShape(Circle())
@@ -202,86 +138,226 @@ struct ProfileImage : View {
     
 }
 
-struct ConversationView: View {
-    
 
-    var desriptions:[Message]
-    
-    let offset:CGFloat = -50
-    
-    var isVillain:Bool
-    
-    
-    var body: some View {
-        
-        VStack(spacing:30){
-         
-            ForEach(desriptions,id:\.content) { desription in
-                
-                
-                
-                HStack{
-                    ProfileImage(isVillain: isVillain)
-                        .padding(.leading,30)
-                        .offset(x:0,y: desription.content == "graph" ? -offset + 50 : 0)
-                    
-                    
-                    
-                    
-                    if desription.isImage {
-                        
-                        if(desription.content == "graph")
-                        {
-                            Image(desription.content)
-                                .resizable()
-                                .frame(width:300,height: 300)
-                                .scaledToFit()
-                                .clipShape(ChatBubble())
-                                .offset(x:0,y: offset)
-                        }
-                        
-                        else {
-                            Image(desription.content)
-                                .resizable()
-                                .frame(width:50,height: 50)
-                                .scaledToFit()
-                                .padding()
-                                .background(Color.bubbleColor)
-                                .clipShape(ChatBubble())
-                                .offset(x:0,y: offset)
-                        }
-                        
-                      
-                    }
-                    
-                    else {
-                        Text(desription.content)
-                            .padding()
-                            .font(.custom(CustomFont.regular, size: 20))
-                            .foregroundColor(Color.white)
-                            .background(Color.bubbleColor)
-                            .clipShape(ChatBubble())
-                            .offset(x:0,y: offset)
-                    }
-                    
-                    
-                }.frame(maxWidth: .infinity,alignment: .leading)
-                    
-            }
-        }
-       
-        
-        
-       
-        
-        
-    }
-    
-}
 
               
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
        ContentView()
+    }
+}
+
+struct ConversationView: View {
+    
+    var desriptions:[Message]
+    var isVillain:Bool
+    @Binding var page:Page
+    
+    var body: some View {
+        VStack(spacing: 20){
+            
+            Divider()
+                .frame(maxWidth: .infinity,maxHeight: 1,alignment: .top)
+                .background(.white)
+                .padding(.horizontal)
+            
+            
+            ForEach(desriptions,id: \.content){ description in
+                
+                if description.isImage {
+                    Image(description.content)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width:300,height: 300)
+                }
+                
+                else {
+                    Text(description.content)
+                        .font(.custom(CustomFont.regular, size: 30))
+                        .foregroundColor(.white)
+                        .frame(maxWidth:.infinity,alignment: .leading)
+                        .padding(.leading,40)
+                }
+                
+                
+            }
+            
+            
+        }
+        .overlay(alignment:.topLeading,content: {
+            ProfileImage(isVillain: isVillain)
+                .offset(x:30,y:-170)
+        })
+        .overlay(alignment:.topTrailing, content: {
+            Button {
+               
+                switch page {
+                                   
+               case .talk1:
+               page = .talk2
+               case .talk2:
+               page = .talk3
+               case .talk3:
+               page = .talk4
+               case .talk4:
+                page = .howToPlay
+               case .howToPlay:
+                    page = .game
+               
+               default:
+                   print("Hello")
+               
+               }
+                
+            } label: {
+                
+                HStack {
+                    Text(page.buttonTitle)
+                        .font(.custom(CustomFont.regular, size: 20))
+                      
+                    
+                    Image(systemName: "play.fill")
+                      
+                    
+                }
+                
+                    
+                
+            }
+            .buttonStyle(.borderedProminent)
+            .tint(.orange)
+            .foregroundColor(.white)
+            .offset(x:-20,y:-100)
+        })
+        .frame(maxWidth: .infinity,maxHeight: .infinity,alignment: .bottom)
+        .padding(.bottom,50)
+        .background(.black.opacity(0.5))
+    }
+}
+
+struct HowToPlayView: View {
+    
+    var desriptions:[Message]
+    @Binding var page:Page
+    
+    var body: some View {
+        VStack(spacing: 10){
+            
+            Divider()
+                .frame(maxWidth: .infinity,maxHeight: 1,alignment: .top)
+                .background(.white)
+                .padding(.horizontal)
+            
+            Text(desriptions[0].content)
+                .font(.custom(CustomFont.regular, size: 30))
+                .foregroundColor(.white)
+                .frame(maxWidth:.infinity,alignment: .leading)
+                .padding(.leading,40)
+            
+            Text(desriptions[1].content)
+                .font(.custom(CustomFont.regular, size: 30))
+                .foregroundColor(.white)
+                .frame(maxWidth:.infinity,alignment: .leading)
+                .padding(.leading,40)
+            
+            Image(desriptions[2].content)
+                .resizable()
+                .scaledToFit()
+                .frame(width:100,height: 100)
+            
+            Text(desriptions[3].content)
+                .font(.custom(CustomFont.regular, size: 30))
+                .foregroundColor(.white)
+                .frame(maxWidth:.infinity,alignment: .leading)
+                .padding(.leading,40)
+            
+            Text(desriptions[4].content)
+                .font(.custom(CustomFont.regular, size: 30))
+                .foregroundColor(.white)
+                .frame(maxWidth:.infinity,alignment: .leading)
+                .padding(.leading,40)
+            
+            HStack {
+                Image(desriptions[5].content)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width:100,height: 100)
+                Image(desriptions[6].content)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width:100,height: 100)
+            }
+            
+            Text(desriptions[7].content)
+                .font(.custom(CustomFont.regular, size: 30))
+                .foregroundColor(.white)
+                .frame(maxWidth:.infinity,alignment: .leading)
+                .padding(.leading,40)
+            
+            Image(desriptions[8].content)
+                .resizable()
+                .scaledToFit()
+                .frame(width:100,height: 100)
+            
+            Text(desriptions[9].content)
+                .font(.custom(CustomFont.regular, size: 30))
+                .foregroundColor(.white)
+                .frame(maxWidth:.infinity,alignment: .leading)
+                .padding(.leading,40)
+            
+            
+            
+        
+            
+            
+        }
+        .overlay(alignment:.topLeading,content: {
+            ProfileImage(isVillain: false)
+                .offset(x:30,y:-170)
+        })
+        .overlay(alignment:.topTrailing, content: {
+            Button {
+               
+                switch page {
+                                   
+               case .talk1:
+               page = .talk2
+               case .talk2:
+               page = .talk3
+               case .talk3:
+               page = .talk4
+               case .talk4:
+                page = .howToPlay
+               case .howToPlay:
+                    page = .game
+               
+               default:
+                   print("Hello")
+               
+               }
+                
+            } label: {
+                
+                HStack {
+                    Text(page.buttonTitle)
+                        .font(.custom(CustomFont.regular, size: 20))
+                      
+                    
+                    Image(systemName: "play.fill")
+                      
+                    
+                }
+                
+                    
+                
+            }
+            .buttonStyle(.borderedProminent)
+            .tint(.orange)
+            .foregroundColor(.white)
+            .offset(x:-20,y:-100)
+        })
+        .frame(maxWidth: .infinity,maxHeight: .infinity,alignment: .bottom)
+        .padding(.bottom,50)
+        .background(.black.opacity(0.5))
     }
 }
