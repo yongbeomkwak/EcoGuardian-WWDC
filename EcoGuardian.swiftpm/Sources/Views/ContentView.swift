@@ -95,14 +95,24 @@ struct ContentView: View {
                             }
                     } label: {
                         
-                        Text(viewModel.page.buttonTitle)
-                            .font(.custom(CustomFont.regular, size: 20))
-                            .foregroundColor(Color.white)
-                            .padding()
-                            .background(Color.bubbleColor.cornerRadius(10).shadow(radius: 10))
+                        HStack {
+                            Text(viewModel.page.buttonTitle)
+                                .font(.custom(CustomFont.regular, size: 20))
+                              
+                            
+                            Image(systemName: "play.fill")
+                              
+                            
+                        }
+                        
+//                        .foregroundColor(Color.white)
+//                        .padding()
+//                        .background(Color.bubbleColor.cornerRadius(10).shadow(radius: 10))
                             
                         
                     }
+                    .buttonStyle(.borderedProminent)
+                    .foregroundColor(.white)
                     .frame(maxHeight:.infinity,alignment:.bottom)
                     .padding(.bottom,70)
                 }

@@ -14,6 +14,7 @@ class GameScene: SKScene, ObservableObject{
     let cameraNode = SKCameraNode()
     var tempertureNode = SKSpriteNode()
     var bgmPlayer = SKAudioNode()
+    var backgroundNode = SKSpriteNode()
     
     var generateTimer1 = Timer()
     var generateTimer2 = Timer()
@@ -115,12 +116,16 @@ extension GameScene {
         
         
         let landTexture = bgAtlas.textureNamed(landName)
+        let bgTexture = bgAtlas.textureNamed("tmpBG")
         
         let width = self.size.width
         let height = self.size.height
   
         let landWidth = landTexture.size().width
         let landRepeatNum = Int(ceil(width/landWidth))
+        
+        let bgWidth = bgTexture.size().width
+        let bgRepeatNum = Int(ceil(width/bgWidth))
         
        
         for i in 0...landRepeatNum{
@@ -133,7 +138,7 @@ extension GameScene {
             // 1,1: 우상단 기준
             
             land.position = CGPoint(x: CGFloat(i)*landWidth, y: 25)
-            land.zPosition = Layer.bg
+            land.zPosition = Layer.land
             
             land.name = "land"
             land.physicsBody = SKPhysicsBody(rectangleOf: land.size,center: CGPoint(x: landWidth/2, y: land.size.height/2))
@@ -154,6 +159,22 @@ extension GameScene {
                     
             }
         
+        for i in 0...bgRepeatNum {
+            backgroundNode = SKSpriteNode(texture: bgTexture)
+            
+            backgroundNode.position = CGPoint(x: CGFloat(i)*bgWidth, y: height/2)
+            backgroundNode.zPosition = Layer.bg
+            
+            addChild(backgroundNode)
+            
+            let moveLeft = SKAction.moveBy(x: -landWidth, y: 0, duration: 20)
+            let moveReset = SKAction.moveBy(x: landWidth, y: 0, duration: 0)
+            let moveSequence = SKAction.sequence([moveLeft,moveReset])
+            
+            backgroundNode.run(SKAction.repeatForever(moveSequence))
+            
+            
+        }
         
         
      
@@ -194,7 +215,6 @@ extension GameScene {
         player.physicsBody?.categoryBitMask = PhysicsCategory.player
         
         player.physicsBody?.contactTestBitMask = PhysicsCategory.land | PhysicsCategory.tree | PhysicsCategory.blub | PhysicsCategory.villian
-//        player.physicsBody?.collisionBitMask = PhysicsCategory.land | PhysicsCategory.tree | PhysicsCategory.blub | PhysicsCategory.villian
         player.physicsBody?.isDynamic = true
         player.physicsBody?.affectedByGravity = true
         
@@ -225,8 +245,8 @@ extension GameScene {
         
         let tree = SKSpriteNode(texture: treeTexture)
         
-        let lowLimit  = bgAtlas.textureNamed("land").size().height + 50
-        let highLimit = self.size.height - treeTexture.size().height
+        let lowLimit  = bgAtlas.textureNamed("land").size().height + 20
+        let highLimit = self.size.height - treeTexture.size().height / 2
         
         
         tree.position = CGPoint(x: 1000, y: Int.random(in: Int(lowLimit)...Int(highLimit)))
@@ -262,7 +282,7 @@ extension GameScene {
         let bulb = SKSpriteNode(texture: bulbTexture)
         
         let lowLimit  = bgAtlas.textureNamed("land").size().height + 50
-        let highLimit = self.size.height - bulbTexture.size().height
+        let highLimit = self.size.height - bulbTexture.size().height/2
         
         
         bulb.position = CGPoint(x: 1000, y: Int.random(in: Int(lowLimit)...Int(highLimit)))
@@ -297,7 +317,7 @@ extension GameScene {
         let villain = SKSpriteNode(texture: villainTexture)
         
         let lowLimit  = bgAtlas.textureNamed("land").size().height + 50
-        let highLimit = self.size.height - villainTexture.size().height
+        let highLimit = self.size.height - villainTexture.size().height/3
         
         
         villain.position = CGPoint(x: 1000, y: Int.random(in: Int(lowLimit)...Int(highLimit)))

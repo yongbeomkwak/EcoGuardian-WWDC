@@ -24,11 +24,14 @@ struct Layer {
     
     static let bg:CGFloat = 0
     
-    static let player:CGFloat = 1
+    static let land:CGFloat = 1
     
-    static let item:CGFloat = 2
+    static let player:CGFloat = 2
+    
+    static let item:CGFloat = 3
     
     static let zMax:CGFloat = 10
+    
     
 }
 
