@@ -460,7 +460,7 @@ extension GameScene: SKPhysicsContactDelegate {
                     
                 case PhysicsCategory.villian:
                     self.carbonPercent += 10
-                    
+                    cameraShake()
                     self.run(SoundFx.cough)
                 
                     
