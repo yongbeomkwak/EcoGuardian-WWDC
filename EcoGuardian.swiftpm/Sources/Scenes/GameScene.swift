@@ -192,7 +192,7 @@ extension GameScene {
         
         let texture = tempertureAtlas.textureNamed("100")
         tempertureNode = SKSpriteNode(texture: texture)
-        temperturePosition = CGPoint(x: self.size.width/2, y: self.size.height - texture.size().height/2)
+        temperturePosition = CGPoint(x: texture.size().width/2, y: self.size.height - texture.size().height/2)
         
         tempertureNode.position = temperturePosition
         tempertureNode.setScale(0.5)
