@@ -85,7 +85,7 @@ struct Conversation {
     static let howtoPlay:[Message] = [Message(isImage: false, content: "우리의 목표는 대기 중 탄소농도를 0%로 만들어 탄소중립을 이루는게 목표야"),Message(isImage: false, content: "탄소 농도는 밑의 온도계를 이용해서 파약할 수 있어"),Message(isImage: true, content: "100"),
         Message(isImage: false, content: "탄소 농도는 나무와 꺼진 전구를 먹으면 낮출 수 있어"),Message(isImage: false, content: "나무는 10%를 꺼진 전구는 20%를 낮출 수 있어"),Message(isImage: true, content: "bulb"),Message(isImage: true, content: "tree"),
     Message(isImage: false, content: "탄소 구름은 피해야되 만약 먹게된다면 탄소 농도가 10% 증가할꺼야"),Message(isImage: true, content: "villain"),
-        Message(isImage: false, content: "탄소 구름은 피해야되 일정 수준을 넘은면 게임 오버가 될 수 있어.")
+        Message(isImage: false, content: "탄소 구름은 피해야되 일정 수준을 넘은면 게임 클리어를 할 수 없어.")
                                       
                                       
                                       
