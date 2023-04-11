@@ -28,7 +28,7 @@ class GameScene: SKScene, ObservableObject{
     let birdAtlas = SKTextureAtlas(named: "Bird")
     let itemAtlas = SKTextureAtlas(named: "Items")
     let tempertureAtlas = SKTextureAtlas(named: "temperture")
-    let volume:Float = 0.3
+    let volume:Float = 0.5
     
     @Published var carbonPercent:Int = 100
     @Published var isGameClear:Bool = false
