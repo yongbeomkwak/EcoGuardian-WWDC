@@ -76,18 +76,16 @@ class GameScene: SKScene, ObservableObject{
     override func update(_ currentTime: TimeInterval) {
       
         self.player.zRotation = .zero
-        
+
         if player.position.y > size.height - 60  {
             player.position.y = size.height - 60
         }
         
-        if player.position.x > size.width - player.size.width {
-            player.position.x = size.width - player.size.width
+        if player.position.x != size.width / 2 {
+            player.position.x = size.width / 2
         }
         
-        else if player.position.x < player.size.width {
-            player.position.x = player.size.width
-        }
+        
         
         if prev != carbonPercent {
             let texture = tempertureAtlas.textureNamed("\(carbonPercent)")
