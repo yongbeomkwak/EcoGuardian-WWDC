@@ -29,6 +29,7 @@ class GameScene: SKScene, ObservableObject{
     let birdAtlas = SKTextureAtlas(named: "Bird")
     let itemAtlas = SKTextureAtlas(named: "Items")
     let tempertureAtlas = SKTextureAtlas(named: "temperture")
+    let volume:Float = 0.3
     
     @Published var carbonPercent:Int = 100
     @Published var isGameClear:Bool = false
@@ -37,6 +38,11 @@ class GameScene: SKScene, ObservableObject{
     var temperturePosition = CGPoint()
     
     override func didMove(to view: SKView) {
+        
+    
+        
+     
+        
         
         self.size = CGSize(width: 600, height: 500)
         scene?.scaleMode = .aspectFill
@@ -55,6 +61,7 @@ class GameScene: SKScene, ObservableObject{
         createTemperture()
         
         bgmPlayer = SKAudioNode(fileNamed: "bgm.mp3")
+        bgmPlayer.run(SKAction.changeVolume(to: volume, duration: 0))
         bgmPlayer.autoplayLooped = true
         self.addChild(bgmPlayer)
         
@@ -118,7 +125,6 @@ extension GameScene {
         let landTexture = bgAtlas.textureNamed(landName)
         let bgTexture = bgAtlas.textureNamed("factory")
         
-        print("BGT \(bgTexture)")
         
         let width = self.size.width
         let height = self.size.height
@@ -455,6 +461,7 @@ extension GameScene: SKPhysicsContactDelegate {
                     
                 case PhysicsCategory.villian:
                     self.carbonPercent += 10
+                    
                     self.run(SoundFx.cough)
                 
                     
