@@ -266,7 +266,7 @@ extension GameScene {
         tree.physicsBody?.affectedByGravity = false
         tree.physicsBody?.categoryBitMask = PhysicsCategory.tree
         
-        tree.setScale(0.5)
+        tree.setScale(0.7)
         
         addChild(tree)
         
@@ -302,7 +302,7 @@ extension GameScene {
         bulb.physicsBody?.affectedByGravity = false
         bulb.physicsBody?.categoryBitMask = PhysicsCategory.blub
         
-        bulb.setScale(0.5)
+        bulb.setScale(0.7)
         
         addChild(bulb)
         
