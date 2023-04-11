@@ -20,21 +20,42 @@ struct ContentView: View {
               
                 Group{
                     if viewModel.page == .talk1 {
-                        ConversationView(desriptions: Conversation.villain1,isVillain: true,page:$viewModel.page)
+                        ConversationView(desriptions: Conversation.villain1,who: .villian,page:$viewModel.page)
                     }
                     
                     else if viewModel.page == .talk2 {
-                        ConversationView(desriptions: Conversation.hero1,isVillain: false,page:$viewModel.page)
-                            
+                        ConversationView(desriptions: Conversation.you1,who: .you,page:$viewModel.page)
                     }
                     
                     else if viewModel.page == .talk3 {
-                        ConversationView(desriptions: Conversation.villain2,isVillain: true,page:$viewModel.page)
+                        ConversationView(desriptions: Conversation.hero1,who: .hero,page:$viewModel.page)
+                                     
                     }
                     
                     else if viewModel.page == .talk4 {
-                        ConversationView(desriptions: Conversation.hero2,isVillain: false,page:$viewModel.page)
+                        ConversationView(desriptions: Conversation.you2,who: .you,page:$viewModel.page)
+                                     
                     }
+                    
+            
+                    else if viewModel.page == .talk5 {
+                        ConversationView(desriptions: Conversation.villain2,who: .villian,page:$viewModel.page)
+                    }
+                    
+                    else if viewModel.page == .talk6 {
+                        ConversationView(desriptions: Conversation.you3,who: .you,page:$viewModel.page)
+                                     
+                    }
+                    
+                    else if viewModel.page == .talk7 {
+                        ConversationView(desriptions: Conversation.hero2,who: .hero,page:$viewModel.page)
+                    }
+                    
+                    else if viewModel.page == .talk8 {
+                        ConversationView(desriptions: Conversation.you4,who: .you,page:$viewModel.page)
+                                     
+                    }
+                    
                     else if viewModel.page == .howToPlay {
                         HowToPlayView(desriptions: Conversation.howtoPlay, page:$viewModel.page)
                     }
@@ -112,19 +133,19 @@ struct ChatBubble: Shape {
 
 struct ProfileImage : View {
     
-    var isVillain:Bool
+    var who:Characteres
     
     var body: some View {
         
         
         
         
-        Image(isVillain ? "villain" : "speakBird")
+        Image(who == .villian ? "villain" :  who == .hero ? "speakBird" : "you")
             .resizable()
             .scaledToFit()
             .frame(width: 150,height: 150)
             .padding(.all,5)
-            .background(isVillain ? Color(hex: 0xD9D9D9) : Color(hex: 0x65E05B))
+            .background(who == .villian ? Color(hex: 0xD9D9D9) : who == .hero ? Color(hex: 0x65E05B) : .orange)
             .clipShape(Circle())
            // .overlay(Circle().stroke(Color.bubbleColor,lineWidth: 4))
         
@@ -150,7 +171,7 @@ struct ContentView_Previews: PreviewProvider {
 struct ConversationView: View {
     
     var desriptions:[Message]
-    var isVillain:Bool
+    var who:Characteres
     @Binding var page:Page
     
     var body: some View {
@@ -185,36 +206,40 @@ struct ConversationView: View {
             
         }
         .overlay(alignment:.topLeading,content: {
-            ProfileImage(isVillain: isVillain)
+            ProfileImage(who: who)
                 .offset(x:30,y:-170)
         })
         .overlay(alignment:.topTrailing, content: {
             Button {
                
                 switch page {
-                                   
-               case .talk1:
-               page = .talk2
-               case .talk2:
-               page = .talk3
-               case .talk3:
-               page = .talk4
-               case .talk4:
-                page = .howToPlay
-               case .howToPlay:
+        
+               
+                case .talk1:
+                    page = .talk2
+                case .talk2:
+                    page = .talk3
+                case .talk3:
+                    page = .talk4
+                case .talk4:
+                    page = .talk5
+                case .talk5:
+                    page = .talk6
+                case .talk6:
+                    page = .talk7
+                case .talk7:
+                    page = .talk8
+                case .talk8:
+                    page = .howToPlay
+                case .howToPlay:
                     page = .game
-               
-               default:
-                   print("Hello")
-               
-               }
+                case .game:
+                    page = .game
+                }
                 
             } label: {
                 
                 HStack {
-                    Text(page.buttonTitle)
-                        .font(.custom(CustomFont.regular, size: 20))
-                      
                     
                     Image(systemName: "play.fill")
                       
@@ -312,7 +337,7 @@ struct HowToPlayView: View {
             
         }
         .overlay(alignment:.topLeading,content: {
-            ProfileImage(isVillain: false)
+            ProfileImage(who: .hero)
                 .offset(x:30,y:-170)
         })
         .overlay(alignment:.topTrailing, content: {
@@ -339,10 +364,7 @@ struct HowToPlayView: View {
             } label: {
                 
                 HStack {
-                    Text(page.buttonTitle)
-                        .font(.custom(CustomFont.regular, size: 20))
                       
-                    
                     Image(systemName: "play.fill")
                       
                     
