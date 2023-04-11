@@ -22,7 +22,6 @@ class GameScene: SKScene, ObservableObject{
     var generateTimer3 = Timer()
     var touchesBegan = false
     var gameState = GameState.playing
-    var motionManager = CMMotionManager()
     
     
     let bgAtlas = SKTextureAtlas(named: "BG")
