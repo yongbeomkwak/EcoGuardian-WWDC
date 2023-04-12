@@ -8,6 +8,8 @@ public struct FontManager {
         
         registerFont(bundle: Bundle.main, fontName: "Pretendard-Regular", fontExtension: ".ttf")
         
+        registerFont(bundle: Bundle.main, fontName: "Minecrafter.Reg", fontExtension: ".ttf")
+        
         
     }
     

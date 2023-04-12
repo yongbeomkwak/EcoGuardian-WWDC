@@ -57,7 +57,7 @@ struct ContentView: View {
                     }
                     
                     else if viewModel.page == .howToPlay {
-                        HowToPlayView(desriptions: Conversation.howtoPlay, page:$viewModel.page)
+                        HowToPlayView2(desriptions: Conversation.howtoPlay, page:$viewModel.page)
                     }
                     else if viewModel.page == .game {
                        
@@ -166,14 +166,6 @@ struct ProfileImage : View {
     
 }
 
-
-
-              
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-       ContentView()
-    }
-}
 
 struct ConversationView: View {
     

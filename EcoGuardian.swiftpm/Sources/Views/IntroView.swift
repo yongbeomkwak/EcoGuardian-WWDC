@@ -72,16 +72,19 @@ struct SaveButton: View {
                 .font(.custom(CustomFont.bold, size: 20))
                 .foregroundColor(.white)
         }
+//        .onAppear{
+//            for family in UIFont.familyNames {
+//                        print(family)
+//                        
+//                        for names in UIFont.fontNames(forFamilyName: family) {
+//                            print("== \(names)")
+//                        }
+//            }
+//        }
         
         
     }
 }
 
-
-struct IntroView_Previews: PreviewProvider {
-    static var previews: some View {
-        IntroView()
-    }
-}
 
 
