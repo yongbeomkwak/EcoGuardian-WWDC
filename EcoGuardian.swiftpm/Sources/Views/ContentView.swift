@@ -13,14 +13,24 @@ struct ContentView: View {
         
         NavigationView {
             ZStack{
-                
+            
                 Image("BG")
                     .resizable()
                 
+                Color.black.opacity(0.5)
               
                 Group{
                     if viewModel.page == .talk1 {
-                        ConversationView(desriptions: Conversation.villain1,who: .villian,page:$viewModel.page)
+                        
+                        
+                        VStack{
+                            Image("graph")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 500,height: 500)
+                            ConversationView(desriptions: Conversation.villain1,who: .villian,page:$viewModel.page)
+                        }
+                        
                     }
                     
                     else if viewModel.page == .talk2 {
@@ -57,7 +67,7 @@ struct ContentView: View {
                     }
                     
                     else if viewModel.page == .howToPlay {
-                        HowToPlayView2(desriptions: Conversation.howtoPlay, page:$viewModel.page)
+                        HowToPlayView2(desriptions: Conversation.howtoPlay, page: $viewModel.page)
                     }
                     else if viewModel.page == .game {
                        
@@ -83,6 +93,7 @@ struct ContentView: View {
             }
             .ignoresSafeArea()
         }
+        
         .statusBarHidden(true)
         .navigationViewStyle(StackNavigationViewStyle())
         .navigationBarBackButtonHidden(true)
@@ -176,6 +187,8 @@ struct ConversationView: View {
     var body: some View {
         VStack(spacing: 20){
             
+
+            
             Divider()
                 .frame(maxWidth: .infinity,maxHeight: 1,alignment: .top)
                 .background(.white)
@@ -254,7 +267,7 @@ struct ConversationView: View {
         })
         .frame(maxWidth: .infinity,maxHeight: .infinity,alignment: .bottom)
         .padding(.bottom,50)
-        .background(.black.opacity(0.5))
+        
     }
 }
 
