@@ -18,6 +18,8 @@ class IntroScene:SKScene{
     override func didMove(to view: SKView) {
             
             // MARK: - Configured Start Scene
+        
+        self.backgroundColor = .darkGray
         scene?.size = view.bounds.size
         scene?.scaleMode = .aspectFill
         

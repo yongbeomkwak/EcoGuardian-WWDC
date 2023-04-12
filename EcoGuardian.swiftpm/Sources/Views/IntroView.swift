@@ -18,19 +18,22 @@ struct IntroView: View {
         NavigationView {
             ZStack {
                 
+               
+                
                 SpriteView(scene: scene)
                     .navigationBarHidden(true)
                     .navigationBarBackButtonHidden(true)
                     .ignoresSafeArea()
+                    .zIndex(1)
                 
                 
 //                LinearGradient(colors: [Color(hex: 0x545353),Color(hex: 0x7C7171)], startPoint: .top, endPoint: .bottom)
                     
                 
                 VStack{
-                    Image("earth")
+                    Image("dirtyEarth")
                         .resizable()
-                        .frame(width: 500,height: 500)
+                        .frame(width: UIScreen.height/2,height: UIScreen.height/2)
                         .scaledToFit()
                         .padding(.bottom,safeArea.bottom)
 
@@ -38,6 +41,7 @@ struct IntroView: View {
                         SaveButton()
                     }
                 }
+                .zIndex(2)
                 
                 
                 

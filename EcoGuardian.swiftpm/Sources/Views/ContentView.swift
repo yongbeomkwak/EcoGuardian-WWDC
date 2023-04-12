@@ -140,13 +140,20 @@ struct ProfileImage : View {
         
         
         
-        Image(who == .villian ? "villain" :  who == .hero ? "speakBird" : "you")
-            .resizable()
-            .scaledToFit()
-            .frame(width: 150,height: 150)
-            .padding(.all,5)
-            .background(who == .villian ? Color(hex: 0xD9D9D9) : who == .hero ? Color(hex: 0x65E05B) : .orange)
-            .clipShape(Circle())
+        HStack(spacing: 20){
+            Image(who == .villian ? "villain" :  who == .hero ? "speakBird" : "you")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 150,height: 150)
+                .padding(.all,5)
+                .background(who == .villian ? Color(hex: 0xD9D9D9) : who == .hero ? Color(hex: 0x65E05B) : .orange)
+                .clipShape(Circle())
+            Text(who.name)
+                .foregroundColor(.white)
+                .padding()
+                .background(Color.bubbleColor)
+                .clipShape(ChatBubble())
+        }
            // .overlay(Circle().stroke(Color.bubbleColor,lineWidth: 4))
         
         
@@ -203,13 +210,12 @@ struct ConversationView: View {
                 
             }
             
-            
         }
         .overlay(alignment:.topLeading,content: {
             ProfileImage(who: who)
                 .offset(x:30,y:-170)
         })
-        .overlay(alignment:.topTrailing, content: {
+        .overlay(alignment:.bottomTrailing, content: {
             Button {
                
                 switch page {
@@ -239,20 +245,20 @@ struct ConversationView: View {
                 
             } label: {
                 
-                HStack {
+              
                     
-                    Image(systemName: "play.fill")
+                    Image("next")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width:130,height: 130)
                       
                     
-                }
+                
                 
                     
                 
             }
-            .buttonStyle(.borderedProminent)
-            .tint(.orange)
-            .foregroundColor(.white)
-            .offset(x:-20,y:-100)
+            .padding(.trailing,20)
         })
         .frame(maxWidth: .infinity,maxHeight: .infinity,alignment: .bottom)
         .padding(.bottom,50)
@@ -340,43 +346,50 @@ struct HowToPlayView: View {
             ProfileImage(who: .hero)
                 .offset(x:30,y:-170)
         })
-        .overlay(alignment:.topTrailing, content: {
+        .overlay(alignment:.bottomTrailing, content: {
             Button {
                
                 switch page {
-                                   
-               case .talk1:
-               page = .talk2
-               case .talk2:
-               page = .talk3
-               case .talk3:
-               page = .talk4
-               case .talk4:
-                page = .howToPlay
-               case .howToPlay:
+        
+               
+                case .talk1:
+                    page = .talk2
+                case .talk2:
+                    page = .talk3
+                case .talk3:
+                    page = .talk4
+                case .talk4:
+                    page = .talk5
+                case .talk5:
+                    page = .talk6
+                case .talk6:
+                    page = .talk7
+                case .talk7:
+                    page = .talk8
+                case .talk8:
+                    page = .howToPlay
+                case .howToPlay:
                     page = .game
-               
-               default:
-                   print("Hello")
-               
-               }
+                case .game:
+                    page = .game
+                }
                 
             } label: {
                 
-                HStack {
-                      
-                    Image(systemName: "play.fill")
+              
+                    
+                    Image("next")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width:130,height: 130)
                       
                     
-                }
+                
                 
                     
                 
             }
-            .buttonStyle(.borderedProminent)
-            .tint(.orange)
-            .foregroundColor(.white)
-            .offset(x:-20,y:-100)
+            .padding(.trailing,20)
         })
         .frame(maxWidth: .infinity,maxHeight: .infinity,alignment: .bottom)
         .padding(.bottom,50)
