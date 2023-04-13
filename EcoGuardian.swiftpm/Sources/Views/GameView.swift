@@ -22,9 +22,9 @@ struct GameView: View {
         ZStack{
             
             if gamescene.isGameClear {
-//                Image("clear")
-//                    .resizable()
-//                    .scaledToFill()
+                Image("clear")
+                    .resizable()
+                    .scaledToFill()
                 
                 
                 NavigationLink(destination: ContentView()) {
