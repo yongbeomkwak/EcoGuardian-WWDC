@@ -52,7 +52,7 @@ struct ContentView: View {
                     
                     else if viewModel.page == .talk3 {
                         
-                        VStack(spacing:30){
+                        VStack(spacing:20){
 
                             HStack{
                                 Spacer()
@@ -69,7 +69,21 @@ struct ContentView: View {
                                 
                                 Spacer()
                             }
-
+                            .padding(.vertical,5)
+                            
+                            HStack{
+                                Spacer()
+                                DataView(image: "effect4", description: "Rising Sea Level")
+                                
+                                Spacer()
+                                
+                                
+                                DataView(image: "effect5", description: "Lose Plant")
+                                
+                                
+                                Spacer()
+                            }
+                            .padding(.vertical,5)
                             
                             Text("World Resources Institute, Carbon Brief, WWF, The New Climate Economy")
                                 .font(.custom(CustomFont.light,size:20))
@@ -301,13 +315,15 @@ struct DataView: View {
     var description:String
     
     var body: some View {
-        let imageSize = UIScreen.height / 5
+        let height = UIScreen.height / 5
+        let width = UIScreen.height / 4
         
         VStack{
             Image(image)
                 .resizable()
                 .scaledToFill()
-                .frame(width: imageSize,height: imageSize)
+                .frame(width: width,height: height)
+            
             Text(description)
                 .font(.custom(CustomFont.bold,size:20))
                 .foregroundColor(.white)
