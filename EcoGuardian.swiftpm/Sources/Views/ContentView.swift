@@ -55,44 +55,37 @@ struct ContentView: View {
 
                             HStack{
                                 Spacer()
-                                VStack{
-                                    Image("effect1")
-                                        .resizable()
-                                        .scaledToFill()
-                                        .frame(width: 200,height: 200)
-                                    Text("Rising Sea Level")
-                                        .font(.custom(CustomFont.bold,size:20))
-                                        .foregroundColor(.white)
-                                }
+                                DataView(image: "effect1", description: "Rising Sea Level")
                                 
                                 Spacer()
                                 
-                                VStack{
-                                    Image("effect2")
-                                        .resizable()
-                                        .scaledToFill()
-                                        .frame(width: 200,height: 200)
-                                    Text("Lose Coral")
-                                        .font(.custom(CustomFont.bold,size:20))
-                                        .foregroundColor(.white)
-                                }
+                                DataView(image: "effect2", description: "Lose Coral")
                                 
                                 Spacer()
                                 
-                                VStack{
-                                    Image("effect3")
-                                        .resizable()
-                                        .scaledToFill()
-                                        .frame(width: 200,height: 200)
-                                    Text("Lose Plant")
-                                        .font(.custom(CustomFont.bold,size:20))
-                                        .foregroundColor(.white)
-                                }
+                                DataView(image: "effect3", description: "Lose Plant")
                                 
                                 
                                 Spacer()
                             }
-                            .padding(.top,20)
+                            .padding(.top,50)
+                            
+                            HStack{
+                                Spacer()
+                                DataView(image: "effect4", description: "Lose Diversity of Species")
+                                
+                                Spacer()
+                                
+                                DataView(image: "effect5", description: "decrease in land area")
+                                
+                                Spacer()
+                                
+                                DataView(image: "effect6", description: "Lose Plant")
+                                
+                                
+                                Spacer()
+                            }
+                            
                             Text("World Resources Institute, Carbon Brief, WWF, The New Climate Economy")
                                 .font(.custom(CustomFont.light,size:20))
                                 .foregroundColor(.white)
@@ -209,6 +202,7 @@ struct ProfileImage : View {
                 .background(who == .villian ? Color(hex: 0xD9D9D9) : who == .hero ? Color(hex: 0x65E05B) : .orange)
                 .clipShape(Circle())
             Text(who.name)
+                .font(.custom(CustomFont.bold, size: 30))
                 .foregroundColor(.white)
                 .padding()
                 .background(Color.bubbleColor)
@@ -315,3 +309,21 @@ struct ConversationView: View {
 }
 
 
+
+struct DataView: View {
+    
+    var image:String
+    var description:String
+    
+    var body: some View {
+        VStack{
+            Image(image)
+                .resizable()
+                .scaledToFill()
+                .frame(width: 200,height: 200)
+            Text(description)
+                .font(.custom(CustomFont.bold,size:20))
+                .foregroundColor(.white)
+        }
+    }
+}
