@@ -72,7 +72,7 @@ struct Conversation {
     
     static let you1:[Message] = [Message(isImage: false, content: "대기 중 탄소농도가 많아지면 왜 안 좋지?"),Message(isImage: false, content: ""),Message(isImage: false, content: ""),Message(isImage: false, content: ""),Message(isImage: false, content: "")]
     
-    static let hero1:[Message] = [Message(isImage: false, content: "안녕 친구야 나는 환경 지킴이 EcoBird야"),Message(isImage: false, content: "탄소들은 온실효과의 주 원인이야"),Message(isImage: false, content: "온실효과는 온실가스가 담요처럼 지구를 덮어서 ,지구의 온도를 높이는 효과야"),Message(isImage: false, content: "지구의 온도가 2도 오르면 "),Message(isImage: false, content: "가뭄과 물부족,해수면 상승,"),Message(isImage: false, content: "더 이상 탄소들이 활게치게 간과할 수 없어")]
+    static let hero1:[Message] = [Message(isImage: false, content: "안녕 친구야 나는 환경 지킴이 EcoBird야"),Message(isImage: false, content: "탄소들은 온실효과의 주 원인이야"),Message(isImage: false, content: "온실효과는 온실가스가 담요처럼 지구를 덮어서 ,지구의 온도를 높이는 효과야"),Message(isImage: false, content: "위 사진들은 지구의 온도가 오르면 벌어지는 일 중 몇개에 불과해")]
     
     static let you2:[Message] = [Message(isImage: false, content: "탄소가 왜 많이 생기는거지?"),Message(isImage: false, content: ""),Message(isImage: false, content: ""),Message(isImage: false, content: ""),Message(isImage: false, content: "")]
 
@@ -81,7 +81,7 @@ struct Conversation {
     
     static let you3:[Message] = [Message(isImage: false, content:"탄소를 없애는 방법은 없는건가?"),Message(isImage: false, content: ""),Message(isImage: false, content: ""),Message(isImage: false, content: ""),Message(isImage: false, content: "")]
     
-    static let hero2:[Message] = [Message(isImage: false, content: "배출량과 흡수량이 균형을 이루면 더 이상 높아지지 않는다."),Message(isImage: false, content: "나무 한 그루 당 평균 48pounds의 이산화탄소를 흡수해"),Message(isImage: false, content: "또한 대기전력을 뽑으면 나무를 년간 4.7그루에 나무를 심는 효과를 볼 수 있지!"),Message(isImage: false, content: "")]
+    static let hero2:[Message] = [Message(isImage: false, content: "배출량과 흡수량이 균형을 이루면 더 이상 높아지지 않는다."),Message(isImage: false, content: "나무 한 그루 당 평균 48pounds의 이산화탄소를 흡수해"),Message(isImage: false, content: "또한 대기전력을 뽑으면 나무를 년간 4.7그루에 나무를 심는 효과를 볼 수 있지!"),Message(isImage: false, content: "게임 내용도 역시 동일해 방법을 알아보자")]
     
     
     
