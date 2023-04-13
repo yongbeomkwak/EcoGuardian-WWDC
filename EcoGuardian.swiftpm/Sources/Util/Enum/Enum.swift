@@ -14,8 +14,6 @@ enum Page:Int {
     case talk3
     case talk4
     case talk5
-    case talk6
-    case talk7
     case howToPlay
     case game
 

@@ -11,6 +11,7 @@ struct ContentView: View {
     var body: some View {
         
         
+        
         NavigationView {
             ZStack{
             
@@ -110,17 +111,9 @@ struct ContentView: View {
                     
             
                     else if viewModel.page == .talk5 {
-                        ConversationView(desriptions: Conversation.villain2,who: .villian,page:$viewModel.page)
-                    }
-                    
-                    else if viewModel.page == .talk6 {
-                        ConversationView(desriptions: Conversation.you3,who: .you,page:$viewModel.page)
-                                     
-                    }
-                    
-                    else if viewModel.page == .talk7 {
                         ConversationView(desriptions: Conversation.hero2,who: .hero,page:$viewModel.page)
                     }
+                    
                     
                     else if viewModel.page == .howToPlay {
                         HowToPlayView(desriptions: Conversation.howtoPlay, page: $viewModel.page)
@@ -221,7 +214,7 @@ struct ProfileImage : View {
                 .background(Color.bubbleColor)
                 .clipShape(ChatBubble())
         }
-           // .overlay(Circle().stroke(Color.bubbleColor,lineWidth: 4))
+    
         
         
         
@@ -291,10 +284,6 @@ struct ConversationView: View {
                 case .talk4:
                     page = .talk5
                 case .talk5:
-                    page = .talk6
-                case .talk6:
-                    page = .talk7
-                case .talk7:
                     page = .howToPlay
                 case .howToPlay:
                     page = .game

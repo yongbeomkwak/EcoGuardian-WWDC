@@ -69,10 +69,6 @@ struct HowToPlayView: View {
                     case .talk4:
                         page = .talk5
                     case .talk5:
-                        page = .talk6
-                    case .talk6:
-                        page = .talk7
-                    case .talk7:
                         page = .howToPlay
 
                     case .howToPlay:
