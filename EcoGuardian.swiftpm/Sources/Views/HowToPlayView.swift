@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct HowToPlayView2: View {
+struct HowToPlayView: View {
     
     
     var desriptions:[Item]
@@ -19,7 +19,7 @@ struct HowToPlayView2: View {
         VStack(spacing: 0){
             
             
-            VStack {
+            VStack(spacing: 20) {
                 Text("How To Play")
                     .font(.custom(CustomFont.mine, size: 50))
                     .foregroundColor(.white)
@@ -73,9 +73,8 @@ struct HowToPlayView2: View {
                     case .talk6:
                         page = .talk7
                     case .talk7:
-                        page = .talk8
-                    case .talk8:
                         page = .howToPlay
+
                     case .howToPlay:
                         page = .game
                     case .game:

@@ -23,22 +23,56 @@ struct ContentView: View {
                     if viewModel.page == .talk1 {
                         
                         
-                        VStack{
+                        VStack(){
                             Image("graph")
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: 500,height: 500)
+                           
+                            Text("Charles David Keeling's Keeling Curve")
+                                .font(.custom(CustomFont.light,size:20))
+                                .foregroundColor(.white)
+                            
                             ConversationView(desriptions: Conversation.villain1,who: .villian,page:$viewModel.page)
                         }
                         
                     }
                     
                     else if viewModel.page == .talk2 {
-                        ConversationView(desriptions: Conversation.you1,who: .you,page:$viewModel.page)
+                        
+                        VStack{
+                           
+                            
+                            ConversationView(desriptions: Conversation.you1,who: .you,page:$viewModel.page)
+                        }
+                        
                     }
                     
                     else if viewModel.page == .talk3 {
-                        ConversationView(desriptions: Conversation.hero1,who: .hero,page:$viewModel.page)
+                        
+                        VStack{
+                            HStack{
+                                Image("effect1")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 300,height: 300)
+                                Image("effect2")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 300,height: 300)
+                                Image("effect3")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 300,height: 300)
+                            }
+                            Text("World Resources Institute, Carbon Brief, WWF, The New Climate Economy")
+                                .font(.custom(CustomFont.light,size:20))
+                                .foregroundColor(.white)
+                            
+                            ConversationView(desriptions: Conversation.hero1,who: .hero,page:$viewModel.page)
+                        }
+                        
+                        
                                      
                     }
                     
@@ -61,13 +95,8 @@ struct ContentView: View {
                         ConversationView(desriptions: Conversation.hero2,who: .hero,page:$viewModel.page)
                     }
                     
-                    else if viewModel.page == .talk8 {
-                        ConversationView(desriptions: Conversation.you4,who: .you,page:$viewModel.page)
-                                     
-                    }
-                    
                     else if viewModel.page == .howToPlay {
-                        HowToPlayView2(desriptions: Conversation.howtoPlay, page: $viewModel.page)
+                        HowToPlayView(desriptions: Conversation.howtoPlay, page: $viewModel.page)
                     }
                     else if viewModel.page == .game {
                        
@@ -239,8 +268,6 @@ struct ConversationView: View {
                 case .talk6:
                     page = .talk7
                 case .talk7:
-                    page = .talk8
-                case .talk8:
                     page = .howToPlay
                 case .howToPlay:
                     page = .game
@@ -271,133 +298,4 @@ struct ConversationView: View {
     }
 }
 
-struct HowToPlayView: View {
-    
-    var desriptions:[Message]
-    @Binding var page:Page
-    
-    var body: some View {
-        VStack(spacing: 10){
-            
-            Divider()
-                .frame(maxWidth: .infinity,maxHeight: 1,alignment: .top)
-                .background(.white)
-                .padding(.horizontal)
-            
-            Text(desriptions[0].content)
-                .font(.custom(CustomFont.regular, size: 30))
-                .foregroundColor(.white)
-                .frame(maxWidth:.infinity,alignment: .leading)
-                .padding(.leading,40)
-            
-            Text(desriptions[1].content)
-                .font(.custom(CustomFont.regular, size: 30))
-                .foregroundColor(.white)
-                .frame(maxWidth:.infinity,alignment: .leading)
-                .padding(.leading,40)
-            
-            Image(desriptions[2].content)
-                .resizable()
-                .scaledToFit()
-                .frame(width:100,height: 100)
-            
-            Text(desriptions[3].content)
-                .font(.custom(CustomFont.regular, size: 30))
-                .foregroundColor(.white)
-                .frame(maxWidth:.infinity,alignment: .leading)
-                .padding(.leading,40)
-            
-            Text(desriptions[4].content)
-                .font(.custom(CustomFont.regular, size: 30))
-                .foregroundColor(.white)
-                .frame(maxWidth:.infinity,alignment: .leading)
-                .padding(.leading,40)
-            
-            HStack {
-                Image(desriptions[5].content)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width:100,height: 100)
-                Image(desriptions[6].content)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width:100,height: 100)
-            }
-            
-            Text(desriptions[7].content)
-                .font(.custom(CustomFont.regular, size: 30))
-                .foregroundColor(.white)
-                .frame(maxWidth:.infinity,alignment: .leading)
-                .padding(.leading,40)
-            
-            Image(desriptions[8].content)
-                .resizable()
-                .scaledToFit()
-                .frame(width:100,height: 100)
-            
-            Text(desriptions[9].content)
-                .font(.custom(CustomFont.regular, size: 30))
-                .foregroundColor(.white)
-                .frame(maxWidth:.infinity,alignment: .leading)
-                .padding(.leading,40)
-            
-            
-            
-        
-            
-            
-        }
-        .overlay(alignment:.topLeading,content: {
-            ProfileImage(who: .hero)
-                .offset(x:30,y:-170)
-        })
-        .overlay(alignment:.bottomTrailing, content: {
-            Button {
-               
-                switch page {
-        
-               
-                case .talk1:
-                    page = .talk2
-                case .talk2:
-                    page = .talk3
-                case .talk3:
-                    page = .talk4
-                case .talk4:
-                    page = .talk5
-                case .talk5:
-                    page = .talk6
-                case .talk6:
-                    page = .talk7
-                case .talk7:
-                    page = .talk8
-                case .talk8:
-                    page = .howToPlay
-                case .howToPlay:
-                    page = .game
-                case .game:
-                    page = .game
-                }
-                
-            } label: {
-                
-              
-                    
-                    Image("next")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width:130,height: 130)
-                      
-                    
-                
-                
-                    
-                
-            }
-            .padding(.trailing,20)
-        })
-        .frame(maxWidth: .infinity,maxHeight: .infinity,alignment: .bottom)
-        .padding(.bottom,50)
-        .background(.black.opacity(0.5))
-    }
-}
+
