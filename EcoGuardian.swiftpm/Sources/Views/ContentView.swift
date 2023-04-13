@@ -50,21 +50,48 @@ struct ContentView: View {
                     
                     else if viewModel.page == .talk3 {
                         
-                        VStack{
+                        VStack(spacing:30){
+
                             HStack{
-                                Image("effect1")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 400,height: 400)
-                                Image("effect2")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 400,height: 400)
-                                Image("effect3")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 400,height: 400)
+                                Spacer()
+                                VStack{
+                                    Image("effect1")
+                                        .resizable()
+                                        .scaledToFill()
+                                        .frame(width: 200,height: 200)
+                                    Text("Rising Sea Level")
+                                        .font(.custom(CustomFont.bold,size:20))
+                                        .foregroundColor(.white)
+                                }
+                                
+                                Spacer()
+                                
+                                VStack{
+                                    Image("effect2")
+                                        .resizable()
+                                        .scaledToFill()
+                                        .frame(width: 200,height: 200)
+                                    Text("Lose Coral")
+                                        .font(.custom(CustomFont.bold,size:20))
+                                        .foregroundColor(.white)
+                                }
+                                
+                                Spacer()
+                                
+                                VStack{
+                                    Image("effect3")
+                                        .resizable()
+                                        .scaledToFill()
+                                        .frame(width: 200,height: 200)
+                                    Text("Lose Plant")
+                                        .font(.custom(CustomFont.bold,size:20))
+                                        .foregroundColor(.white)
+                                }
+                                
+                                
+                                Spacer()
                             }
+                            .padding(.top,20)
                             Text("World Resources Institute, Carbon Brief, WWF, The New Climate Economy")
                                 .font(.custom(CustomFont.light,size:20))
                                 .foregroundColor(.white)
