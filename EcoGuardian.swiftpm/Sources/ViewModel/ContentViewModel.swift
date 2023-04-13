@@ -13,7 +13,7 @@ final class ContentViewModel: ObservableObject {
     
     @Published var page:Page
     
-    init(){
+    init() {
         self.page = .talk1
     }
     

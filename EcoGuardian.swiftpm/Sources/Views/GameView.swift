@@ -14,16 +14,16 @@ struct GameView: View {
     
     @Binding var page:Page
     
-    @StateObject private var gamescene = GameScene()
- 
     
+    
+    @StateObject private var gamescene = GameScene()
     var body: some View {
      
         ZStack{
             
             if gamescene.isGameClear {
                 NavigationLink(destination: ContentView()) {
-                    Text("Return")
+                    Text("\(gamescene.nBulb)")
                 }
             }
           

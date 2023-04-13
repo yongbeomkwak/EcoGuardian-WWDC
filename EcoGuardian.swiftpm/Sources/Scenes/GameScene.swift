@@ -9,8 +9,9 @@ import Foundation
 import SpriteKit
 import CoreMotion
 
-class GameScene: SKScene, ObservableObject{
+final class GameScene: SKScene, ObservableObject{
 
+    
     var player = SKSpriteNode()
     let cameraNode = SKCameraNode()
     var tempertureNode = SKSpriteNode()
@@ -30,6 +31,8 @@ class GameScene: SKScene, ObservableObject{
     let tempertureAtlas = SKTextureAtlas(named: "temperture")
     let volume:Float = 0.5
     
+    @Published var nBulb:Int = 0
+    @Published var nTree:Int = 0
     @Published var carbonPercent:Int = 100
     @Published var isGameClear:Bool = false
     
@@ -450,10 +453,12 @@ extension GameScene: SKPhysicsContactDelegate {
                 case PhysicsCategory.tree:
                     
                     self.carbonPercent -= 10
+                    nTree += 1
                     self.run(SoundFx.point)
                 
                 case PhysicsCategory.blub:
                     self.carbonPercent -= 20
+                    nBulb += 1
                     self.run(SoundFx.point)
                     
                 case PhysicsCategory.villian:
