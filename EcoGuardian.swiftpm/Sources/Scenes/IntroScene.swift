@@ -20,7 +20,7 @@ class IntroScene:SKScene{
             // MARK: - Configured Start Scene
         
         self.backgroundColor = .darkGray
-        scene?.size = view.bounds.size
+        scene?.size =  CGSize(width: 600, height: 500)
         scene?.scaleMode = .aspectFill
         
         randomGenerate()

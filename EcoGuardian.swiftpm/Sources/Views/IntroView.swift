@@ -19,15 +19,13 @@ struct IntroView: View {
             ZStack {
                 
                
-                
+
                 SpriteView(scene: scene)
                     .navigationBarHidden(true)
                     .navigationBarBackButtonHidden(true)
                     .ignoresSafeArea()
                     .zIndex(1)
                 
-                
-//                LinearGradient(colors: [Color(hex: 0x545353),Color(hex: 0x7C7171)], startPoint: .top, endPoint: .bottom)
                     
                 
                 VStack{

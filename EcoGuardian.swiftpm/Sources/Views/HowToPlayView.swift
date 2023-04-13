@@ -84,7 +84,7 @@ struct HowToPlayView: View {
                     Image("next")
                         .resizable()
                         .scaledToFit()
-                        .frame(width:130,height: 130)
+                        .frame(width:UIScreen.height/6,height: UIScreen.height/6)
                     
                 }
                 .padding(.bottom,50)
@@ -104,8 +104,13 @@ struct HowToPlayView: View {
     
     struct ItemDescriptionView: View {
         
+        
+        
+        
         var image:String
         var content:[String]
+        var height = UIScreen.height/4
+        var width = UIScreen.width/2.5
         
         var body: some View {
             
@@ -135,7 +140,7 @@ struct HowToPlayView: View {
                 
                 
             }
-            .frame(width:UIScreen.width/2.5,height: UIScreen.width/5)
+            .frame(width:width,height:height)
             .padding(.horizontal)
             .background(.white)
             .clipShape(RoundedRectangle(cornerRadius: 12))

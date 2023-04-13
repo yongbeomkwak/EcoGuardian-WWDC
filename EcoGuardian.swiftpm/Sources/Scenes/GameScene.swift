@@ -41,9 +41,6 @@ final class GameScene: SKScene, ObservableObject{
     
     override func didMove(to view: SKView) {
         
-    
-        
-     
         
         
         self.size = CGSize(width: 600, height: 500)
@@ -51,6 +48,7 @@ final class GameScene: SKScene, ObservableObject{
         
         fetchBackground(landName:"desrtLand")
         
+       // print(self.size)
         
         camera = cameraNode
         cameraNode.position.x = self.size.width / 2
@@ -195,7 +193,7 @@ extension GameScene {
         
         let texture = tempertureAtlas.textureNamed("100")
         tempertureNode = SKSpriteNode(texture: texture)
-        temperturePosition = CGPoint(x: texture.size().width/2, y: self.size.height - texture.size().height/2)
+        temperturePosition = CGPoint(x: texture.size().width/2, y: self.size.height - texture.size().height/2 - 30)
         
         tempertureNode.position = temperturePosition
         tempertureNode.setScale(0.5)
@@ -256,7 +254,7 @@ extension GameScene {
         let tree = SKSpriteNode(texture: treeTexture)
         
         let lowLimit  = bgAtlas.textureNamed("land").size().height + 20
-        let highLimit = self.size.height - treeTexture.size().height / 2
+        let highLimit = self.size.height - treeTexture.size().height
         
         
         tree.position = CGPoint(x: 1000, y: Int.random(in: Int(lowLimit)...Int(highLimit)))
@@ -292,7 +290,7 @@ extension GameScene {
         let bulb = SKSpriteNode(texture: bulbTexture)
         
         let lowLimit  = bgAtlas.textureNamed("land").size().height + 50
-        let highLimit = self.size.height - bulbTexture.size().height/2
+        let highLimit = self.size.height - bulbTexture.size().height
         
         
         bulb.position = CGPoint(x: 1000, y: Int.random(in: Int(lowLimit)...Int(highLimit)))
@@ -327,7 +325,7 @@ extension GameScene {
         let villain = SKSpriteNode(texture: villainTexture)
         
         let lowLimit  = bgAtlas.textureNamed("land").size().height + 50
-        let highLimit = self.size.height - villainTexture.size().height/3
+        let highLimit = self.size.height - villainTexture.size().height
         
         
         villain.position = CGPoint(x: 1000, y: Int.random(in: Int(lowLimit)...Int(highLimit)))

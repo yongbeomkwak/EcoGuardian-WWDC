@@ -1,15 +1,11 @@
 import SwiftUI
 
-
-
-
-
 struct ContentView: View {
     
     @StateObject var viewModel = ContentViewModel()
     
     var body: some View {
-        
+        let imageSize = UIScreen.height / 4
         
         
         NavigationView {
@@ -17,6 +13,7 @@ struct ContentView: View {
             
                 Image("BG")
                     .resizable()
+                    .ignoresSafeArea()
                 
                 Color.black.opacity(0.5)
               
@@ -25,14 +22,18 @@ struct ContentView: View {
                         
                         
                         VStack(){
-                            Image("graph")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 500,height: 500)
-                           
-                            Text("Charles David Keeling's Keeling Curve")
-                                .font(.custom(CustomFont.light,size:20))
-                                .foregroundColor(.white)
+                            
+                            VStack{
+                                Image("graph")
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: imageSize,height: imageSize)
+                                
+                                Text("World Resources Institute, Carbon Brief, WWF, The New Climate Economy")
+                                    .font(.custom(CustomFont.light,size:20))
+                                    .foregroundColor(.white)
+                            }.padding(.vertical)
+                            
                             
                             ConversationView(desriptions: Conversation.villain1,who: .villian,page:$viewModel.page)
                         }
@@ -68,23 +69,7 @@ struct ContentView: View {
                                 
                                 Spacer()
                             }
-                            .padding(.top,50)
-                            
-                            HStack{
-                                Spacer()
-                                DataView(image: "effect4", description: "Lose Diversity of Species")
-                                
-                                Spacer()
-                                
-                                DataView(image: "effect5", description: "decrease in land area")
-                                
-                                Spacer()
-                                
-                                DataView(image: "effect6", description: "Lose Plant")
-                                
-                                
-                                Spacer()
-                            }
+
                             
                             Text("World Resources Institute, Carbon Brief, WWF, The New Climate Economy")
                                 .font(.custom(CustomFont.light,size:20))
@@ -197,12 +182,12 @@ struct ProfileImage : View {
             Image(who == .villian ? "villain" :  who == .hero ? "speakBird" : "you")
                 .resizable()
                 .scaledToFit()
-                .frame(width: 150,height: 150)
+                .frame(width: UIScreen.width/10,height: UIScreen.width/10)
                 .padding(.all,5)
                 .background(who == .villian ? Color(hex: 0xD9D9D9) : who == .hero ? Color(hex: 0x65E05B) : .orange)
                 .clipShape(Circle())
             Text(who.name)
-                .font(.custom(CustomFont.bold, size: 30))
+                .font(.custom(CustomFont.bold, size: 20))
                 .foregroundColor(.white)
                 .padding()
                 .background(Color.bubbleColor)
@@ -292,7 +277,7 @@ struct ConversationView: View {
                     Image("next")
                     .resizable()
                     .scaledToFit()
-                    .frame(width:130,height: 130)
+                    .frame(width:UIScreen.height/6,height: UIScreen.height/6)
                       
                     
                 
@@ -316,14 +301,17 @@ struct DataView: View {
     var description:String
     
     var body: some View {
+        let imageSize = UIScreen.height / 5
+        
         VStack{
             Image(image)
                 .resizable()
                 .scaledToFill()
-                .frame(width: 200,height: 200)
+                .frame(width: imageSize,height: imageSize)
             Text(description)
                 .font(.custom(CustomFont.bold,size:20))
                 .foregroundColor(.white)
         }
+        .padding(.vertical)
     }
 }
