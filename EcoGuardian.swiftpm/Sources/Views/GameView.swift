@@ -67,6 +67,26 @@ struct GameView: View {
     
                     }
                     
+                    Text("youa adfadfadfadsfs \(Int(gamescene.nTree * 48) + Int(gamescene.nBulb * 48 * 4)) pounds )")
+                        .font(.custom(CustomFont.mine, size: 40))
+                        .foregroundColor(.white)
+                    
+                    Text("saafadsfsdkf;lsadf;aklsdflsd;kfa;sdlkfsda;klfdskf;dsa;flk")
+                        .font(.custom(CustomFont.mine, size: 40))
+                        .foregroundColor(.white)
+                    
+                    NavigationLink(destination:ContentView(),isActive:$restart)
+                    {
+                        Button {
+                            restart = true
+                        } label: {
+                            Image("restart")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width:UIScreen.height/6,height: UIScreen.height/6)
+                        }
+
+                    }
                  
                     
                 }
@@ -74,18 +94,7 @@ struct GameView: View {
                 .frame(maxHeight: .infinity)
                 
                 
-                NavigationLink(destination:ContentView(),isActive:$restart)
-                {
-                    Button {
-                        restart = true
-                    } label: {
-                        Image("restart")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width:UIScreen.height/6,height: UIScreen.height/6)
-                    }
-
-                }
+                
             }
           
             
