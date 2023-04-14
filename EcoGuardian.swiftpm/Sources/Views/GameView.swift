@@ -22,9 +22,61 @@ struct GameView: View {
         ZStack{
             
             if gamescene.isGameClear {
+                
+                
+                
+                
                 Image("clear")
                     .resizable()
                     .scaledToFill()
+    
+                Image("cleanEarth")
+                    .resizable()
+                    .frame(width: UIScreen.height/2,height: UIScreen.height/2)
+                    .scaledToFit()
+                
+                Color.white.opacity(0.4)
+                
+                VStack{
+                    
+                    Text("You saved a Earth")
+                        .font(.custom(CustomFont.mine, size: 40))
+                        .foregroundColor(.white)
+                       // .frame(maxHeight: .infinity,alignment: .top)
+                    
+                    HStack {
+                        Image("tree")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 100,height: 100)
+                        
+                        Text("X \(gamescene.nTree)")
+                            .font(.custom(CustomFont.mine, size: 40))
+                            .foregroundColor(.white)
+                    }
+                    
+                    HStack{
+                        Image("bulb")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 100,height: 100)
+                        
+                        Text("X \(gamescene.nBulb)")
+                            .font(.custom(CustomFont.mine, size: 40))
+                            .foregroundColor(.white)
+    
+                    }
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                }
+                .padding()
+                .frame(maxHeight: .infinity)
+                //.background(.white.opacity(0.4))
                 
                 
                 NavigationLink(destination: ContentView()) {

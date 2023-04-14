@@ -27,6 +27,7 @@ final class GameScene: SKScene, ObservableObject{
     var touchesBegan = false
     var gameState = GameState.playing
     
+    
     var time:Int = 0 {
         didSet {
             
@@ -62,6 +63,7 @@ final class GameScene: SKScene, ObservableObject{
     @Published var nTree:Int = 0
     @Published var carbonPercent:Int = 100
     @Published var isGameClear:Bool = false
+    @Published var finshTime:Int = 0
     
     var prev:Int = 100
     var temperturePosition = CGPoint()
@@ -154,7 +156,7 @@ extension GameScene {
         timeLabel.fontSize = 20
         
         timeLabel.zPosition = Layer.zMax
-        timeLabel.position = CGPoint(x: self.size.width / 2, y: self.size.height - 90)
+        timeLabel.position = CGPoint(x: self.size.width / 2, y: self.size.height - 60)
         
         addChild(timeLabel)
         
@@ -299,10 +301,10 @@ extension GameScene {
         let tree = SKSpriteNode(texture: treeTexture)
         
         let lowLimit  = bgAtlas.textureNamed("land").size().height + 20
-        let highLimit = self.size.height - treeTexture.size().height
+        let highLimit = self.size.height - treeTexture.size().height/2
         
         
-        tree.position = CGPoint(x: 1000, y: Int.random(in: Int(lowLimit)...Int(highLimit)))
+        tree.position = CGPoint(x: Int(self.size.width + tree.size.width), y: Int.random(in: Int(lowLimit)...Int(highLimit)))
         tree.zPosition = Layer.item
         tree.name = "tree"
         tree.physicsBody = SKPhysicsBody(rectangleOf: tree.size)
@@ -335,10 +337,10 @@ extension GameScene {
         let bulb = SKSpriteNode(texture: bulbTexture)
         
         let lowLimit  = bgAtlas.textureNamed("land").size().height + 50
-        let highLimit = self.size.height - bulbTexture.size().height
+        let highLimit = self.size.height - bulbTexture.size().height/2
         
         
-        bulb.position = CGPoint(x: 1000, y: Int.random(in: Int(lowLimit)...Int(highLimit)))
+        bulb.position = CGPoint(x: Int(self.size.width + bulb.size.width), y: Int.random(in: Int(lowLimit)...Int(highLimit)))
         bulb.zPosition = Layer.item
         bulb.name = "bulb"
         bulb.physicsBody = SKPhysicsBody(rectangleOf: bulb.size)
@@ -370,10 +372,10 @@ extension GameScene {
         let villain = SKSpriteNode(texture: villainTexture)
         
         let lowLimit  = bgAtlas.textureNamed("land").size().height + 50
-        let highLimit = self.size.height - villainTexture.size().height
+        let highLimit = self.size.height - villainTexture.size().height/2
         
         
-        villain.position = CGPoint(x: 1000, y: Int.random(in: Int(lowLimit)...Int(highLimit)))
+        villain.position = CGPoint(x: Int(self.size.width + villain.size.width), y: Int.random(in: Int(lowLimit)...Int(highLimit)))
         villain.zPosition = Layer.item
         villain.name = "villain"
         villain.physicsBody = SKPhysicsBody(rectangleOf: villain.size)
@@ -445,8 +447,10 @@ extension GameScene {
         generateTimer1.invalidate()
         generateTimer2.invalidate()
         generateTimer3.invalidate()
+        generateTimer4.invalidate()
         player.removeFromParent()
         self.bgmPlayer.run(.stop())
+        finshTime = time
         isGameClear = true
     }
     
@@ -501,12 +505,12 @@ extension GameScene: SKPhysicsContactDelegate {
                     
                 case PhysicsCategory.tree:
                     
-                    self.carbonPercent -= 10
+                    self.carbonPercent -= 100
                     nTree += 1
                     self.run(SoundFx.point)
                 
                 case PhysicsCategory.blub:
-                    self.carbonPercent -= 20
+                    self.carbonPercent -= 100
                     nBulb += 1
                     self.run(SoundFx.point)
                     
