@@ -18,11 +18,38 @@ final class GameScene: SKScene, ObservableObject{
     var bgmPlayer = SKAudioNode()
     var backgroundNode = SKSpriteNode()
     
+    var timeLabel = SKLabelNode()
     var generateTimer1 = Timer()
     var generateTimer2 = Timer()
     var generateTimer3 = Timer()
+    var generateTimer4 = Timer()
+    
     var touchesBegan = false
     var gameState = GameState.playing
+    
+    var time:Int = 0 {
+        didSet {
+            
+            var sec = String(time / 100)
+            
+            var mil = String(time % 100)
+            
+            if sec.count < 2 {
+               sec = "0" + sec
+            }
+            
+            if mil.count < 2{
+                mil = "0" + mil
+            }
+            
+            timeLabel.text = "\(sec):\(mil)"
+            
+            
+            
+            
+        }
+    }
+    
     
     
     let bgAtlas = SKTextureAtlas(named: "BG")
@@ -57,8 +84,10 @@ final class GameScene: SKScene, ObservableObject{
         
         physicsWorld.gravity = CGVector(dx: 0, dy: -9.8)
         self.physicsWorld.contactDelegate = self // 앱안에서 일어나는 충돌을 게임씬이 관리함
+        
         createPlayer()
         createTemperture()
+        createTimer()
         
         bgmPlayer = SKAudioNode(fileNamed: "bgm.mp3")
         bgmPlayer.run(SKAction.changeVolume(to: volume, duration: 0))
@@ -70,6 +99,8 @@ final class GameScene: SKScene, ObservableObject{
         generateTimer2 = .scheduledTimer(timeInterval: 8, target: self, selector: #selector(makeBulb), userInfo: nil, repeats: true)
         
         generateTimer3 = .scheduledTimer(timeInterval: 2, target: self, selector: #selector(makeVillain), userInfo: nil, repeats: true)
+        
+        generateTimer3 = .scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(runTimer), userInfo: nil, repeats: true)
         
         
     }
@@ -114,6 +145,20 @@ final class GameScene: SKScene, ObservableObject{
 }
 
 extension GameScene {
+    
+    func createTimer() {
+        
+        timeLabel = SKLabelNode(text: "00:00")
+        timeLabel.fontName = "Minecrafter"
+        timeLabel.fontColor = .white
+        timeLabel.fontSize = 20
+        
+        timeLabel.zPosition = Layer.zMax
+        timeLabel.position = CGPoint(x: self.size.width / 2, y: self.size.height - 90)
+        
+        addChild(timeLabel)
+        
+    }
     
     
     func fetchBackground(landName:String) {
@@ -347,6 +392,12 @@ extension GameScene {
         
         villain.run(actions)
         
+        
+    }
+    
+    @objc func runTimer(){
+        
+        self.time += 1
         
     }
     
