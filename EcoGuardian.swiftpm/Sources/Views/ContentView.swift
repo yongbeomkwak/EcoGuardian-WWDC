@@ -30,9 +30,9 @@ struct ContentView: View {
                                     .frame(width: imageSize,height: imageSize)
                                 
                                 Text("World Resources Institute, Carbon Brief, WWF, The New Climate Economy")
-                                    .font(.custom(CustomFont.light,size:20))
+                                    .font(.custom(CustomFont.light,size:25))
                                     .foregroundColor(.white)
-                            }.padding(.vertical)
+                            }.padding(.top,20)
                             
                             
                             ConversationView(desriptions: Conversation.villain1,who: .villian,page:$viewModel.page)
@@ -52,7 +52,7 @@ struct ContentView: View {
                     
                     else if viewModel.page == .talk3 {
                         
-                        VStack(spacing:20){
+                        VStack(spacing:10){
 
                             HStack{
                                 Spacer()
@@ -73,7 +73,7 @@ struct ContentView: View {
                             
                             HStack{
                                 Spacer()
-                                DataView(image: "effect4", description: "Rising Sea Level")
+                                DataView(image: "effect4", description: "dec")
                                 
                                 Spacer()
                                 
@@ -86,8 +86,9 @@ struct ContentView: View {
                             .padding(.vertical,5)
                             
                             Text("World Resources Institute, Carbon Brief, WWF, The New Climate Economy")
-                                .font(.custom(CustomFont.light,size:20))
+                                .font(.custom(CustomFont.light,size:25))
                                 .foregroundColor(.white)
+                                .padding(.bottom,20)
                             
                             ConversationView(desriptions: Conversation.hero1,who: .hero,page:$viewModel.page)
                         }
@@ -109,18 +110,7 @@ struct ContentView: View {
                     
                     else if viewModel.page == .howToPlay {
                         HowToPlayView(desriptions: Conversation.howtoPlay, page: $viewModel.page)
-                    }
-                    else if viewModel.page == .game {
-                       
-                        NavigationLink(destination: GameView(page: $viewModel.page)) {
-                            Text("지구를 구하러가자!")
-                                .font(.custom(CustomFont.regular, size: 20))
-                                .foregroundColor(Color.white)
-                                .padding()
-                                .background(Color.bubbleColor.cornerRadius(10).shadow(radius: 10))
-                        }
-                    }
-                    
+                    }                    
                     
                 }
                 .transition(.opacity.animation(.easeIn))
@@ -316,13 +306,13 @@ struct DataView: View {
     
     var body: some View {
         let height = UIScreen.height / 5
-        let width = UIScreen.height / 4
+        let width = UIScreen.height / 3
         
         VStack{
             Image(image)
                 .resizable()
-                .scaledToFill()
                 .frame(width: width,height: height)
+                .scaledToFill()
             
             Text(description)
                 .font(.custom(CustomFont.bold,size:20))

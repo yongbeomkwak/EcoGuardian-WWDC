@@ -13,6 +13,7 @@ struct HowToPlayView: View {
     
     var desriptions:[Item]
     @Binding var page:Page
+    @State var goGame:Bool = false
     
     var body: some View {
         
@@ -50,6 +51,11 @@ struct HowToPlayView: View {
                 }
                 .frame(maxWidth: .infinity)
                 
+                NavigationLink(destination:GameView(page: $page),isActive: $goGame)
+                {
+                    EmptyView()
+                }
+                
                 Spacer()
                 
             }
@@ -57,25 +63,7 @@ struct HowToPlayView: View {
             .overlay(alignment:.bottomTrailing,content: {
                 Button {
                     
-                    switch page {
-                        
-                        
-                    case .talk1:
-                        page = .talk2
-                    case .talk2:
-                        page = .talk3
-                    case .talk3:
-                        page = .talk4
-                    case .talk4:
-                        page = .talk5
-                    case .talk5:
-                        page = .howToPlay
-
-                    case .howToPlay:
-                        page = .game
-                    case .game:
-                        page = .game
-                    }
+                    goGame = true
                     
                 } label: {
                     

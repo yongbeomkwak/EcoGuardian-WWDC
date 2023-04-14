@@ -13,7 +13,7 @@ struct GameView: View {
     
     
     @Binding var page:Page
-    
+    @State var restart:Bool = false
     
     
     @StateObject private var gamescene = GameScene()
@@ -41,8 +41,8 @@ struct GameView: View {
                     
                     Text("You saved a Earth")
                         .font(.custom(CustomFont.mine, size: 40))
-                        .foregroundColor(.white)
-                       // .frame(maxHeight: .infinity,alignment: .top)
+                        .foregroundColor(.green)
+                       
                     
                     HStack {
                         Image("tree")
@@ -50,7 +50,7 @@ struct GameView: View {
                             .scaledToFit()
                             .frame(width: 100,height: 100)
                         
-                        Text("X \(gamescene.nTree)")
+                        Text("X \(gamescene.nTree) = \(Int(gamescene.nTree * 48))")
                             .font(.custom(CustomFont.mine, size: 40))
                             .foregroundColor(.white)
                     }
@@ -61,26 +61,30 @@ struct GameView: View {
                             .scaledToFit()
                             .frame(width: 100,height: 100)
                         
-                        Text("X \(gamescene.nBulb)")
+                        Text("X \(gamescene.nBulb) = \(Int(gamescene.nBulb * 48 * 4))")
                             .font(.custom(CustomFont.mine, size: 40))
                             .foregroundColor(.white)
     
                     }
                     
-                    
-                    
-                    
-                    
-                    
+                 
                     
                 }
                 .padding()
                 .frame(maxHeight: .infinity)
-                //.background(.white.opacity(0.4))
                 
                 
-                NavigationLink(destination: ContentView()) {
-                    Text("\(gamescene.nBulb)")
+                NavigationLink(destination:ContentView(),isActive:$restart)
+                {
+                    Button {
+                        restart = true
+                    } label: {
+                        Image("restart")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width:UIScreen.height/6,height: UIScreen.height/6)
+                    }
+
                 }
             }
           
