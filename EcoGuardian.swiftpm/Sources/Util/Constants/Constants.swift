@@ -66,30 +66,30 @@ struct Message {
 }
 
 struct Conversation {
-
+   
     
-    static let villain1:[Message] = [Message(isImage: false, content: "크크크 나는 Carbon Creeper 탄소 구름덩어리지"),Message(isImage: false, content: "오늘도 지구는 우리 탄소들이 살기 좋게 따뜻해지고 있군."),Message(isImage:false,content:"우리는 1958년도 315ppm 에서 2020년도 419ppm인 33% 증가 했어"),Message(isImage: false, content: ""),Message(isImage: false, content: "")]
+    static let villain1:[Message] = [Message(isImage: false, content: "Ha ha ha... I am Carbon Creeper and toxic cloud monster."),Message(isImage: false, content: "Every day the earth is getting warmer and warmer and make it perfect for"),Message(isImage: false, content: "Carbon monsters to live."),Message(isImage:false,content:"In 1958 carbon in the air was only 315 ppm but in 2020 it was increased to 419 ppm"),Message(isImage: false, content:"and the total carbon was increased by 33%"),Message(isImage: false, content: "")]
     
-    static let you1:[Message] = [Message(isImage: false, content: "대기 중 탄소농도가 많아지면 왜 안 좋지?"),Message(isImage: false, content: ""),Message(isImage: false, content: ""),Message(isImage: false, content: ""),Message(isImage: false, content: "")]
+    static let you1:[Message] = [Message(isImage: false, content: "I am not sure why it is so bad if we have too much Carbon in the air?"),Message(isImage: false, content: ""),Message(isImage: false, content: ""),Message(isImage: false, content: ""),Message(isImage: false, content: "")]
     
-    static let hero1:[Message] = [Message(isImage: false, content: "안녕 친구야 나는 환경 지킴이 EcoBird야"),Message(isImage: false, content: "탄소들은 온실효과의 주 원인이야"),Message(isImage: false, content: "온실효과는 온실가스가 담요처럼 지구를 덮어서 ,지구의 온도를 높이는 효과야"),Message(isImage: false, content: "위 사진들은 지구의 온도가 오르면 벌어지는 일 중 몇개에 불과해")]
+    static let hero1:[Message] = [Message(isImage: false, content: "I am EcoBird and environmenatl protector"),Message(isImage: false, content: "Carborn is the main cause of the Greenhouse effect"),Message(isImage: false, content: "Greenhouse effect is Greenhouse gas wraps the earth like blanket and increase the earth's temperature"),Message(isImage: false, content: "Pictures above shows what happended the earth temperature gets increase and these are just few of example")]
     
-    static let you2:[Message] = [Message(isImage: false, content:"탄소를 없애는 방법은 없는건가?"),Message(isImage: false, content: ""),Message(isImage: false, content: ""),Message(isImage: false, content: ""),Message(isImage: false, content: "")]
+    static let you2:[Message] = [Message(isImage: false, content:"What can we do to reduce carbon?"),Message(isImage: false, content: ""),Message(isImage: false, content: ""),Message(isImage: false, content: ""),Message(isImage: false, content: "")]
     
-    static let hero2:[Message] = [Message(isImage: false, content: "배출량과 흡수량이 균형을 이루면 더 이상 높아지지 않는다."),Message(isImage: false, content: "나무 한 그루 당 평균 48pounds의 이산화탄소를 흡수해"),Message(isImage: false, content: "또한 대기전력을 뽑으면 나무를 년간 4.7그루에 나무를 심는 효과를 볼 수 있지!"),Message(isImage: false, content: "게임 내용도 역시 동일해 방법을 알아보자")]
+    static let hero2:[Message] = [Message(isImage: false, content: "if we can balance the carbon produce and absorb amount, the situation will not get worse."),Message(isImage: false, content: "One tree can absorb 48 pounds of Co2 annually"),Message(isImage: false, content: "And if we conserve energy/electricity, that has effect of planting 4.7 trees per year!"),Message(isImage: false, content: "Let's use the same concept for game content")]
     
     
     
     static let howtoPlay:[Item] = [
         
-        Item(item: "speakBird", content: ["화면을 탭하면 나는 날 수 있어"]),
+        Item(item: "speakBird", content: ["If you touch the screen, I can fly."]),
         
-        Item(item: "100", content: ["탄소농도를 파악할 수 있는 온도계야" ,"우리는 이 농도를 0%로 만들어야해."]),
+        Item(item: "100", content: ["This is the Carbon level display thermometer" ,"We need to make the 100% carbon to 0%"]),
        
-        Item(item: "bulb", content: ["꺼진 전구를 먹으면 탄소 농도","20%를 낮출 수 있어."]),
-        Item(item: "tree", content: ["나무를 먹으면 탄소 농도","10%를 낮출 수 있어."]),
+        Item(item: "bulb", content: ["Each turned off light bulb I eat, it will reduce 20% of carbon"]),
+        Item(item: "tree", content: ["Each tree I eat, it will reduce 10% of carbon"]),
         
-        Item(item: "villain", content: ["탄소 구름은 탄소 농도를 10% 증가 시켜."])]
+        Item(item: "villain", content: ["Each carbon cloud I eat, it will increase 10% of carbon"])]
 
 
                                       

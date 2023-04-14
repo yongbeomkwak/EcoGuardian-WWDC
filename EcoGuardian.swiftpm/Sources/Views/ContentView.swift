@@ -60,11 +60,11 @@ struct ContentView: View {
                                 
                                 Spacer()
                                 
-                                DataView(image: "effect2", description: "Lose Coral")
+                                DataView(image: "effect2", description: "Dying Coral")
                                 
                                 Spacer()
                                 
-                                DataView(image: "effect3", description: "Lose Plant")
+                                DataView(image: "effect3", description: "The vanishing garden")
                                 
                                 
                                 Spacer()
@@ -73,12 +73,12 @@ struct ContentView: View {
                             
                             HStack{
                                 Spacer()
-                                DataView(image: "effect4", description: "dec")
+                                DataView(image: "effect4", description: "Reduce of the land")
                                 
                                 Spacer()
                                 
                                 
-                                DataView(image: "effect5", description: "Lose Plant")
+                                DataView(image: "effect5", description: "Impact to the Permafrost")
                                 
                                 
                                 Spacer()
