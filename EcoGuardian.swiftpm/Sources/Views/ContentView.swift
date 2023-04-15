@@ -71,20 +71,6 @@ struct ContentView: View {
                             }
                             .padding(.vertical,5)
                             
-                            HStack{
-                                Spacer()
-                                DataView(image: "effect4", description: "Reduce of the land")
-                                
-                                Spacer()
-                                
-                                
-                                DataView(image: "effect5", description: "Impact to the Permafrost")
-                                
-                                
-                                Spacer()
-                            }
-                            .padding(.vertical,5)
-                            
                             Text("World Resources Institute, Carbon Brief, WWF, The New Climate Economy")
                                 .font(.custom(CustomFont.light,size:25))
                                 .foregroundColor(.white)

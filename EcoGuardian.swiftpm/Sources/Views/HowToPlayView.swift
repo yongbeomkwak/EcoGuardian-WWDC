@@ -114,15 +114,13 @@ struct HowToPlayView: View {
                     ForEach(content,id: \.self){ str in
                         
                         Text(str)
-                            .font(.custom(CustomFont.regular, size: 30))
+                            .font(.custom(CustomFont.bold, size: 25))
                             .foregroundColor(.black)
+                            .frame(maxWidth:.infinity,alignment: .leading)
+                        //.background(.black)
                         
                     }
                 }
-                
-                
-                
-                
                 
                 
                 
