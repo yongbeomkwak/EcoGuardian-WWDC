@@ -128,7 +128,7 @@ struct HowToPlayView: View {
             }
             .frame(width:width,height:height)
             .padding(.horizontal)
-            .background(.white)
+            .background(.white.opacity(0.5))
             .clipShape(RoundedRectangle(cornerRadius: 12))
             
             
