@@ -6,7 +6,7 @@
 //
 import Foundation
 import SpriteKit
-
+import SwiftUI
 
 
 
@@ -22,7 +22,10 @@ struct PhysicsCategory {
 
 struct FontSize {
     
-    static let conversation:CGFloat = UIScreen.height / 40
+    static let conversation:CGFloat = UIScreen.height / 38
+    static let gameDescription:CGFloat = UIScreen.height / 40
+    static let mine:CGFloat = UIScreen.height / 35
+    static let advice:CGFloat = UIScreen.height / 40
     
 }
 
@@ -66,23 +69,23 @@ struct SoundFx {
 
 struct Message {
     
-    let isImage:Bool
+    let textColor:Color
     let content:String
-    
+    let isBold:Bool
 }
 
 struct Conversation {
    
     
-    static let villain1:[Message] = [Message(isImage: false, content: "Haw haw haw!!! I am the notorious Carbon Creeper, the toxic cloud monster!"),Message(isImage: false, content: "Every day the earth is getting warmer and warmer"),Message(isImage: false, content: "and that makes perfect for me to live!"),Message(isImage:false,content:"Back in 1958, the carbon in the air was only 315 ppm"),Message(isImage: false, content: "but now in the 2020s, it's increased to 419 ppm!"),Message(isImage: false, content:"That's 33% increase in total !!")]
+    static let villain1:[Message] = [Message(textColor:.red, content: "Haw haw haw!!! I am the notorious Carbon Creeper, the toxic cloud monster!",isBold: true),Message(textColor:.white, content: "Every day the earth is getting warmer and warmer",isBold: false),Message(textColor:.white, content: "and that makes perfect for me to live!",isBold: false),Message(textColor:.white,content:"Back in 1958, the carbon in the air was only 315 ppm",isBold: false),Message(textColor:.white, content: "but now in the 2020s, it's increased to 419 ppm!",isBold: false),Message(textColor:.white, content:"That's 33% increase in total !!",isBold: false)]
     
-    static let you1:[Message] = [Message(isImage: false, content: "Well, I'm not sure why it is so bad if we have too much carbon in the air."),Message(isImage: false, content: ""),Message(isImage: false, content: ""),Message(isImage: false, content: ""),Message(isImage: false, content: "")]
+    static let you1:[Message] = [Message(textColor:.white, content: "Well, I'm not sure why it is so bad if we have too much carbon in the air.",isBold: false),Message(textColor:.white, content: "",isBold: false),Message(textColor:.white, content: "",isBold: false),Message(textColor:.white, content: "",isBold: false),Message(textColor:.white, content: "",isBold: false)]
     
-    static let hero1:[Message] = [Message(isImage: false, content: "I am EcoBird, the guardian of the earth!"),Message(isImage: false, content: "Carbon causes the Greenhouse effect."),Message(isImage: false, content: "Greenhouse effect is dangerous because the gas wrapping the earth like a blanket."),Message(isImage: false, content: "Pictures above show what happens if the earth's temperature goes up."),Message(isImage: false, content: "And you know what? These are only just a few of the downsides.")]
+    static let hero1:[Message] = [Message(textColor:.green, content: "I am EcoBird, the guardian of the earth!",isBold: true),Message(textColor:.white, content: "Carbon causes the Greenhouse effect.",isBold: false),Message(textColor:.white, content: "Greenhouse effect is dangerous because the gas wrapping the earth like a blanket.",isBold: false),Message(textColor:.white, content: "Pictures above show what happens if the earth's temperature goes up.",isBold: false),Message(textColor:.white, content: "And you know what? These are only just a few of the downsides.",isBold: false)]
     
-    static let you2:[Message] = [Message(isImage: false, content:"Oh my! Then what can we do to reduce carbon and save the Earth?"),Message(isImage: false, content: ""),Message(isImage: false, content: ""),Message(isImage: false, content: ""),Message(isImage: false, content: "")]
+    static let you2:[Message] = [Message(textColor:.white, content:"Oh my! Then what can we do to reduce carbon and save the Earth?",isBold: false),Message(textColor:.white, content: "",isBold: false),Message(textColor:.white, content: "",isBold: false),Message(textColor:.white, content: "", isBold: false),Message(textColor:.white, content: "",isBold: false)]
     
-    static let hero2:[Message] = [Message(isImage: false, content: "We can make it better by reducing the carbon production"),Message(isImage: false, content: "and absorbing the carbon in the air!"),Message(isImage: false, content: "One tree can absorb 48 pounds of Co2 annually, and if we save energy"),Message(isImage: false, content: "that has an effect of planting 4.7 trees a year!"),Message(isImage: false, content: "That's also a hint for the game you'll play now!")]
+    static let hero2:[Message] = [Message(textColor:.white, content: "We can make it better by reducing the carbon production",isBold: false),Message(textColor:.white, content: "and absorbing the carbon in the air!",isBold: false),Message(textColor:.green, content: "One tree can absorb 48 pounds of Co2 annually, and if we save energy",isBold: true),Message(textColor:.green, content: "that has an effect of planting 4.7 trees a year!",isBold: true),Message(textColor:.white, content: "That's also a hint for the game you'll play now!",isBold: false)]
     
     
     

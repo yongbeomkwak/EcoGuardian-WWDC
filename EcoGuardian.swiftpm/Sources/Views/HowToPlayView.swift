@@ -22,7 +22,7 @@ struct HowToPlayView: View {
             
             VStack(spacing: 20) {
                 Text("How To Play")
-                    .font(.custom(CustomFont.mine, size: 50))
+                    .font(.custom(CustomFont.mine, size: FontSize.mine + 10))
                     .foregroundColor(.white)
                 
                 
@@ -56,7 +56,6 @@ struct HowToPlayView: View {
                     EmptyView()
                 }
                 
-                Spacer()
                 
             }
             
@@ -81,7 +80,7 @@ struct HowToPlayView: View {
             
             
             .frame(maxWidth: .infinity,maxHeight: .infinity,alignment: .top)
-            .padding(.vertical)
+            .padding(.vertical,30)
             .ignoresSafeArea()
             
             
@@ -114,10 +113,8 @@ struct HowToPlayView: View {
                     ForEach(content,id: \.self){ str in
                         
                         Text(str)
-                            .font(.custom(CustomFont.bold, size: 25))
+                            .font(.custom(CustomFont.bold, size: FontSize.gameDescription))
                             .foregroundColor(.white)
-                           // .frame(maxWidth:.infinity,alignment: .leading)
-                        //.background(.black)
                         
                     }
                 }

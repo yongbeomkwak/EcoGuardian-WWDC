@@ -5,7 +5,7 @@ struct ContentView: View {
     @StateObject var viewModel = ContentViewModel()
     
     var body: some View {
-        let imageSize = UIScreen.height / 4
+        let imageSize = UIScreen.height / 3
         
         
         NavigationView {
@@ -26,8 +26,9 @@ struct ContentView: View {
                             VStack{
                                 Image("graph")
                                     .resizable()
-                                    .frame(width: imageSize,height: imageSize)
                                     .scaledToFill()
+                                    .frame(width: imageSize,height: imageSize)
+                                    .padding(.top,50)
                                    
                                 
                                 Text("World Resources Institute, Carbon Brief, WWF, The New Climate Economy")
@@ -70,7 +71,7 @@ struct ContentView: View {
                                 
                                 Spacer()
                             }
-                            .padding(.vertical,5)
+                            .padding(.top,50)
                             
                             Text("World Resources Institute, Carbon Brief, WWF, The New Climate Economy")
                                 .font(.caption)
@@ -201,6 +202,7 @@ struct ConversationView: View {
     
     var desriptions:[Message]
     var who:Characteres
+    
     @Binding var page:Page
     
     var body: some View {
@@ -216,20 +218,12 @@ struct ConversationView: View {
             VStack(spacing: 10) {
                 ForEach(desriptions,id: \.content){ description in
                     
-                    if description.isImage {
-                        Image(description.content)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width:300,height: 300)
-                    }
-                    
-                    else {
                         Text(description.content)
-                            .font(.custom(CustomFont.regular, size: FontSize.conversation))
-                            .foregroundColor(.white)
+                        .font(.custom(description.isBold ? CustomFont.bold : CustomFont.regular, size: FontSize.conversation))
+                            .foregroundColor(description.textColor)
                             .frame(maxWidth:.infinity,alignment: .leading)
                             .padding(.leading,40)
-                    }
+
                     
                     
                 }
@@ -295,14 +289,17 @@ struct DataView: View {
     var description:String
     
     var body: some View {
-        let height = UIScreen.height / 5
+        let height = UIScreen.height / 4
         let width = UIScreen.height / 3
         
         VStack{
             Image(image)
                 .resizable()
-                .frame(width: width,height: height)
                 .scaledToFill()
+                .frame(width: width,height: height)
+                
+                
+                
             
             Text(description)
                 .font(.custom(CustomFont.bold,size:20))
