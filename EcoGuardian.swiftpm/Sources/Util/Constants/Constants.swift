@@ -20,6 +20,12 @@ struct PhysicsCategory {
     static let land:UInt32 = 0x1 << 4
 }
 
+struct FontSize {
+    
+    static let conversation:CGFloat = UIScreen.height / 40
+    
+}
+
 struct Layer {
     
     static let bg:CGFloat = 0
@@ -72,7 +78,7 @@ struct Conversation {
     
     static let you1:[Message] = [Message(isImage: false, content: "Well, I'm not sure why it is so bad if we have too much carbon in the air."),Message(isImage: false, content: ""),Message(isImage: false, content: ""),Message(isImage: false, content: ""),Message(isImage: false, content: "")]
     
-    static let hero1:[Message] = [Message(isImage: false, content: "I am EcoBird, the guardian of the earth!"),Message(isImage: false, content: "When the carbon rate goes up, it causes a massive problem to the ecosystem."),Message(isImage: false, content: "Why? Because the carbon causes the Greenhouse effect."),Message(isImage: false, content: "Greenhouse effect is dangerous because the gas wrapping the earth like a blanket"),Message(isImage: false, content: "increases the earth's temperature!"),Message(isImage: false, content: "Pictures above show what happens if the earth's temperature goes up."),Message(isImage: false, content: "And you know what? These are only just a few of the downsides.")]
+    static let hero1:[Message] = [Message(isImage: false, content: "I am EcoBird, the guardian of the earth!"),Message(isImage: false, content: "Carbon causes the Greenhouse effect."),Message(isImage: false, content: "Greenhouse effect is dangerous because the gas wrapping the earth like a blanket."),Message(isImage: false, content: "Pictures above show what happens if the earth's temperature goes up."),Message(isImage: false, content: "And you know what? These are only just a few of the downsides.")]
     
     static let you2:[Message] = [Message(isImage: false, content:"Oh my! Then what can we do to reduce carbon and save the Earth?"),Message(isImage: false, content: ""),Message(isImage: false, content: ""),Message(isImage: false, content: ""),Message(isImage: false, content: "")]
     

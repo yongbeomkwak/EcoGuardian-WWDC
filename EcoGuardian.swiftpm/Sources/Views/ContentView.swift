@@ -26,11 +26,12 @@ struct ContentView: View {
                             VStack{
                                 Image("graph")
                                     .resizable()
-                                    .scaledToFill()
                                     .frame(width: imageSize,height: imageSize)
+                                    .scaledToFill()
+                                   
                                 
                                 Text("World Resources Institute, Carbon Brief, WWF, The New Climate Economy")
-                                    .font(.custom(CustomFont.light,size:25))
+                                    .font(.caption)
                                     .foregroundColor(.white)
                             }.padding(.top,20)
                             
@@ -72,7 +73,7 @@ struct ContentView: View {
                             .padding(.vertical,5)
                             
                             Text("World Resources Institute, Carbon Brief, WWF, The New Climate Economy")
-                                .font(.custom(CustomFont.light,size:25))
+                                .font(.caption)
                                 .foregroundColor(.white)
                                 .padding(.bottom,20)
                             
@@ -212,7 +213,7 @@ struct ConversationView: View {
                 .background(.white)
                 .padding(.horizontal)
             
-            VStack(spacing: 15) {
+            VStack(spacing: 10) {
                 ForEach(desriptions,id: \.content){ description in
                     
                     if description.isImage {
@@ -224,7 +225,7 @@ struct ConversationView: View {
                     
                     else {
                         Text(description.content)
-                            .font(.custom(CustomFont.regular, size: 30))
+                            .font(.custom(CustomFont.regular, size: FontSize.conversation))
                             .foregroundColor(.white)
                             .frame(maxWidth:.infinity,alignment: .leading)
                             .padding(.leading,40)
@@ -239,7 +240,7 @@ struct ConversationView: View {
         }
         .overlay(alignment:.topLeading,content: {
             ProfileImage(who: who)
-                .offset(x:30,y:-170)
+                .offset(x:30,y:-120)
         })
         .overlay(alignment:.bottomTrailing, content: {
             Button {
