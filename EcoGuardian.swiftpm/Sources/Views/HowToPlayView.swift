@@ -50,7 +50,6 @@ struct HowToPlayView: View {
                     
                 }
                 .frame(maxWidth: .infinity)
-                
                 NavigationLink(destination:GameView(page: $page),isActive: $goGame)
                 {
                     EmptyView()
@@ -58,7 +57,7 @@ struct HowToPlayView: View {
                 
                 
             }
-            
+            .frame(maxWidth: .infinity,maxHeight: .infinity,alignment: .top)
             .overlay(alignment:.bottomTrailing,content: {
                 Button {
                     
@@ -74,12 +73,11 @@ struct HowToPlayView: View {
                         .frame(width:UIScreen.height/6,height: UIScreen.height/6)
                     
                 }
-                .padding(.bottom,50)
                 .padding(.trailing,20)
             })
             
             
-            .frame(maxWidth: .infinity,maxHeight: .infinity,alignment: .top)
+            
             .padding(.vertical,30)
             .ignoresSafeArea()
             

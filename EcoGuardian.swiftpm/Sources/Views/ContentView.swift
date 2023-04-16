@@ -24,11 +24,15 @@ struct ContentView: View {
                         VStack(){
                             
                             VStack{
+                                
+                                Text("The Keeling Curve")
+                                    .font(.largeTitle)
+                                    .foregroundColor(.white)
+                                
                                 Image("graph")
                                     .resizable()
                                     .scaledToFill()
                                     .frame(width: imageSize,height: imageSize)
-                                    .padding(.top,50)
                                    
                                 
                                 Text("World Resources Institute, Carbon Brief, WWF, The New Climate Economy")
@@ -55,23 +59,24 @@ struct ContentView: View {
                     else if viewModel.page == .talk3 {
                         
                         VStack(spacing:10){
-
-                            HStack{
-                                Spacer()
-                                DataView(image: "effect1", description: "Rising Sea Level")
+                            
+                            VStack{
+                                HStack{
+                                    Spacer()
+                                    DataView(image: "effect1", description: "Rising Sea Level")
+                                    
+                                    Spacer()
+                                    
+                                    DataView(image: "effect2", description: "Dying Coral")
+                                    
+                                    Spacer()
+                                }
                                 
-                                Spacer()
-                                
-                                DataView(image: "effect2", description: "Dying Coral")
-                                
-                                Spacer()
                                 
                                 DataView(image: "effect3", description: "The vanishing garden")
-                                
-                                
-                                Spacer()
                             }
-                            .padding(.top,50)
+                            
+                           
                             
                             Text("World Resources Institute, Carbon Brief, WWF, The New Climate Economy")
                                 .font(.caption)
@@ -234,7 +239,7 @@ struct ConversationView: View {
         }
         .overlay(alignment:.topLeading,content: {
             ProfileImage(who: who)
-                .offset(x:30,y:-120)
+                .offset(x:30,y:-UIScreen.width/10)
         })
         .overlay(alignment:.bottomTrailing, content: {
             Button {
@@ -297,14 +302,7 @@ struct DataView: View {
                 .resizable()
                 .scaledToFill()
                 .frame(width: width,height: height)
-                
-                
-                
-            
-            Text(description)
-                .font(.custom(CustomFont.bold,size:20))
-                .foregroundColor(.white)
         }
-        .padding(.vertical)
+        .padding(.top,30)
     }
 }
