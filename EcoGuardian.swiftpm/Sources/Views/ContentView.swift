@@ -5,7 +5,7 @@ struct ContentView: View {
     @StateObject var viewModel = ContentViewModel()
     
     var body: some View {
-        let imageSize = UIScreen.height / 3
+        let imageSize = UIScreen.height / 2.5
         
         
         NavigationView {

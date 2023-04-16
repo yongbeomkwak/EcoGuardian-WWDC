@@ -31,7 +31,7 @@ struct IntroView: View {
                 VStack{
                     Image("dirtyEarth")
                         .resizable()
-                        .scaledToFit()
+                        .scaledToFill()
                         .frame(width: UIScreen.height/2,height: UIScreen.height/2)
                         .padding(.bottom,safeArea.bottom)
 
