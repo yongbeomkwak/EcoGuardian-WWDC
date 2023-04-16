@@ -31,8 +31,8 @@ struct IntroView: View {
                 VStack{
                     Image("dirtyEarth")
                         .resizable()
-                        .frame(width: UIScreen.height/2,height: UIScreen.height/2)
                         .scaledToFit()
+                        .frame(width: UIScreen.height/2,height: UIScreen.height/2)
                         .padding(.bottom,safeArea.bottom)
 
                     NavigationLink(destination: ContentView()) {

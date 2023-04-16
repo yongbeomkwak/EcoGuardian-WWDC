@@ -35,64 +35,70 @@ struct GameView: View {
                     .frame(width: UIScreen.height/2,height: UIScreen.height/2)
                     .scaledToFit()
                 
-                VStack{
+                VStack(spacing: 30){
                     
-                    Text("You saved a Earth!!")
-                        .font(.custom(CustomFont.mine, size: 40))
-                        .foregroundColor(.green)
-                       
-                    
-                    HStack {
-                        Image("tree")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 100,height: 100)
-                        
-                        Text("X \(gamescene.nTree) = \(gamescene.nTree * 48)")
+                    VStack{
+                        Text("You saved a Earth!!")
                             .font(.custom(CustomFont.mine, size: 40))
-                            .foregroundColor(.white)
-                    }
-                    .frame(width:UIScreen.width/4,alignment: .leading)
-                    
-                    HStack{
-                        Image("bulb")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 100,height: 100)
+                            .foregroundColor(.green)
+                            .padding()
+                           
                         
-                        Text("X \(gamescene.nBulb) = \(gamescene.nBulb * 48 * 4)")
-                            .font(.custom(CustomFont.mine, size: 40))
-                            .foregroundColor(.white)
-    
+                        HStack {
+                            Image("tree")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 100,height: 100)
+                            
+                            Text("X \(gamescene.nTree) = \(gamescene.nTree * 48)")
+                                .font(.custom(CustomFont.mine, size: 40))
+                                .foregroundColor(.white)
+                        }
+                        .frame(width:UIScreen.width/4,alignment: .leading)
+                        
+                        HStack{
+                            Image("bulb")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 100,height: 100)
+                            
+                            Text("X \(gamescene.nBulb) = \(gamescene.nBulb * 48 * 4)")
+                                .font(.custom(CustomFont.mine, size: 40))
+                                .foregroundColor(.white)
+        
+                        }
+                        .frame(width:UIScreen.width/4,alignment: .leading)
                     }
-                    .frame(width:UIScreen.width/4,alignment: .leading)
                     
-                    VStack(spacing: 20){
+                    
+                    
+                    VStack(spacing: 15){
                         
                         Text("Wow you get absorbed \(gamescene.nTree * 48 + (gamescene.nBulb * 48 * 4)) pounds")
-                            .font(.custom(CustomFont.mine, size: 40))
+                            .font(.custom(CustomFont.mine, size: 30))
                             .foregroundColor(.green)
                         
                         
                         
-                        Text("We can't afford to ignore the environment issue anymore.")
-                            .font(.custom(CustomFont.mine, size: 30))
+                        Text("We can't blindfold ourselves in front of the environment issue anymore.")
+                            .font(.custom(CustomFont.regular, size: 30))
                             .foregroundColor(.white)
                         
-                        Text("Each of us need to make change")
-                            .font(.custom(CustomFont.mine, size: 30))
+                        Text("Each and every one of us has to make a change.")
+                            .font(.custom(CustomFont.regular, size: 30))
                             .foregroundColor(.white)
-                        Text("from our daily lives to prevent things getting worse.")
-                            .font(.custom(CustomFont.mine, size: 30))
+                        Text("The changes we make in our daily lives can stop things from getting worse.")
+                            .font(.custom(CustomFont.regular, size: 30))
                             .foregroundColor(.white)
                         
-                        Text("global homework to resovle as long as we live.")
-                            .font(.custom(CustomFont.mine, size: 30))
+                        Text("It's the homework for all of us living in this earth as long as we're living in here.")
+                            .font(.custom(CustomFont.regular, size: 30))
                             .foregroundColor(.white)
                         
                         
                     }
                     .padding(.horizontal,20)
+                    .padding(.vertical)
                     
                     
                    
@@ -107,11 +113,11 @@ struct GameView: View {
                             VStack(spacing:20){
                                 Text("Press to resatrt.")
                                     .font(.custom(CustomFont.mine, size: 30))
-                                    .foregroundColor(.white)
+                                    .foregroundColor(.green)
                                 Image("restart")
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(width:UIScreen.height/6,height: UIScreen.height/6)
+                                    .frame(width:UIScreen.height/7,height: UIScreen.height/7)
                             }
                            
                         }

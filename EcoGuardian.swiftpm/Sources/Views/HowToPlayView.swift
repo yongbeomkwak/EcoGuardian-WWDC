@@ -116,7 +116,7 @@ struct HowToPlayView: View {
                         Text(str)
                             .font(.custom(CustomFont.bold, size: 25))
                             .foregroundColor(.white)
-                            .frame(maxWidth:.infinity,alignment: .leading)
+                           // .frame(maxWidth:.infinity,alignment: .leading)
                         //.background(.black)
                         
                     }

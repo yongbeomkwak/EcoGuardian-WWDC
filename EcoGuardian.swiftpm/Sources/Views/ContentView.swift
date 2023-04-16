@@ -212,26 +212,29 @@ struct ConversationView: View {
                 .background(.white)
                 .padding(.horizontal)
             
-            
-            ForEach(desriptions,id: \.content){ description in
-                
-                if description.isImage {
-                    Image(description.content)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width:300,height: 300)
+            VStack(spacing: 15) {
+                ForEach(desriptions,id: \.content){ description in
+                    
+                    if description.isImage {
+                        Image(description.content)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width:300,height: 300)
+                    }
+                    
+                    else {
+                        Text(description.content)
+                            .font(.custom(CustomFont.regular, size: 30))
+                            .foregroundColor(.white)
+                            .frame(maxWidth:.infinity,alignment: .leading)
+                            .padding(.leading,40)
+                    }
+                    
+                    
                 }
-                
-                else {
-                    Text(description.content)
-                        .font(.custom(CustomFont.regular, size: 30))
-                        .foregroundColor(.white)
-                        .frame(maxWidth:.infinity,alignment: .leading)
-                        .padding(.leading,40)
-                }
-                
-                
             }
+            
+            
             
         }
         .overlay(alignment:.topLeading,content: {
@@ -267,7 +270,7 @@ struct ConversationView: View {
                     Image("next")
                     .resizable()
                     .scaledToFit()
-                    .frame(width:UIScreen.height/6,height: UIScreen.height/6)
+                    .frame(width:UIScreen.height/7,height: UIScreen.height/7)
                       
                     
                 
