@@ -86,7 +86,7 @@ struct Conversation {
         
         Item(item: "100", content: ["This is the Carbon level display thermometer","We need to make the 100% carbon to 0%"]),
        
-        Item(item: "bulb", content: ["Each turned off light bulb I eat","It will reduce 20% of carbon"]),
+        Item(item: "bulb", content: ["Each turned off light bulb I eat","It will reduce 30% of carbon"]),
         Item(item: "tree", content: ["Each tree I eat","It will reduce 10% of carbon"]),
         
         Item(item: "villain", content: ["Each carbon cloud I eat","It will increase 10% of carbon"])]

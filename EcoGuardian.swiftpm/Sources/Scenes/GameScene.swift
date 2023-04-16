@@ -22,7 +22,6 @@ final class GameScene: SKScene, ObservableObject{
     var generateTimer1 = Timer()
     var generateTimer2 = Timer()
     var generateTimer3 = Timer()
-    var generateTimer4 = Timer()
     
     var touchesBegan = false
     var gameState = GameState.playing
@@ -89,20 +88,17 @@ final class GameScene: SKScene, ObservableObject{
         
         createPlayer()
         createTemperture()
-        createTimer()
         
         bgmPlayer = SKAudioNode(fileNamed: "bgm.mp3")
         bgmPlayer.run(SKAction.changeVolume(to: volume, duration: 0))
         bgmPlayer.autoplayLooped = true
         self.addChild(bgmPlayer)
         
-        generateTimer1 = .scheduledTimer(timeInterval: 5, target: self, selector: #selector(makeTree), userInfo: nil, repeats: true)
+        generateTimer1 = .scheduledTimer(timeInterval: 4, target: self, selector: #selector(makeTree), userInfo: nil, repeats: true)
         
-        generateTimer2 = .scheduledTimer(timeInterval: 8, target: self, selector: #selector(makeBulb), userInfo: nil, repeats: true)
+        generateTimer2 = .scheduledTimer(timeInterval: 6, target: self, selector: #selector(makeBulb), userInfo: nil, repeats: true)
         
-        generateTimer3 = .scheduledTimer(timeInterval: 2, target: self, selector: #selector(makeVillain), userInfo: nil, repeats: true)
-        
-        generateTimer3 = .scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(runTimer), userInfo: nil, repeats: true)
+        generateTimer3 = .scheduledTimer(timeInterval: 3, target: self, selector: #selector(makeVillain), userInfo: nil, repeats: true)
         
         
     }
@@ -148,19 +144,7 @@ final class GameScene: SKScene, ObservableObject{
 
 extension GameScene {
     
-    func createTimer() {
-        
-        timeLabel = SKLabelNode(text: "00:00")
-        timeLabel.fontName = "Minecrafter"
-        timeLabel.fontColor = .white
-        timeLabel.fontSize = 20
-        
-        timeLabel.zPosition = Layer.zMax
-        timeLabel.position = CGPoint(x: self.size.width / 2, y: self.size.height - 60)
-        
-        addChild(timeLabel)
-        
-    }
+
     
     
     func fetchBackground(landName:String) {
@@ -397,11 +381,6 @@ extension GameScene {
         
     }
     
-    @objc func runTimer(){
-        
-        self.time += 1
-        
-    }
     
     
     
@@ -447,7 +426,6 @@ extension GameScene {
         generateTimer1.invalidate()
         generateTimer2.invalidate()
         generateTimer3.invalidate()
-        generateTimer4.invalidate()
         player.removeFromParent()
         self.bgmPlayer.run(.stop())
         finshTime = time
@@ -505,12 +483,12 @@ extension GameScene: SKPhysicsContactDelegate {
                     
                 case PhysicsCategory.tree:
                     
-                    self.carbonPercent -= 100
+                    self.carbonPercent -= 10
                     nTree += 1
                     self.run(SoundFx.point)
                 
                 case PhysicsCategory.blub:
-                    self.carbonPercent -= 100
+                    self.carbonPercent -= 30
                     nBulb += 1
                     self.run(SoundFx.point)
                     

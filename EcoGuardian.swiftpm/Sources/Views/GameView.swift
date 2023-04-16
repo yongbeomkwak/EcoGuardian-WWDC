@@ -35,11 +35,9 @@ struct GameView: View {
                     .frame(width: UIScreen.height/2,height: UIScreen.height/2)
                     .scaledToFit()
                 
-                Color.white.opacity(0.4)
-                
                 VStack{
                     
-                    Text("You saved a Earth")
+                    Text("You saved a Earth!!")
                         .font(.custom(CustomFont.mine, size: 40))
                         .foregroundColor(.green)
                        
@@ -50,10 +48,11 @@ struct GameView: View {
                             .scaledToFit()
                             .frame(width: 100,height: 100)
                         
-                        Text("X \(gamescene.nTree) = \(Int(gamescene.nTree * 48))")
+                        Text("X \(gamescene.nTree) = \(gamescene.nTree * 48)")
                             .font(.custom(CustomFont.mine, size: 40))
                             .foregroundColor(.white)
                     }
+                    .frame(width:UIScreen.width/4,alignment: .leading)
                     
                     HStack{
                         Image("bulb")
@@ -61,37 +60,76 @@ struct GameView: View {
                             .scaledToFit()
                             .frame(width: 100,height: 100)
                         
-                        Text("X \(gamescene.nBulb) = \(Int(gamescene.nBulb * 48 * 4))")
+                        Text("X \(gamescene.nBulb) = \(gamescene.nBulb * 48 * 4)")
                             .font(.custom(CustomFont.mine, size: 40))
                             .foregroundColor(.white)
     
                     }
+                    .frame(width:UIScreen.width/4,alignment: .leading)
                     
-                    Text("youa adfadfadfadsfs \(Int(gamescene.nTree * 48) + Int(gamescene.nBulb * 48 * 4)) pounds )")
-                        .font(.custom(CustomFont.mine, size: 40))
-                        .foregroundColor(.white)
+                    VStack(spacing: 20){
+                        
+                        Text("Wow you get absorbed \(gamescene.nTree * 48 + (gamescene.nBulb * 48 * 4)) pounds")
+                            .font(.custom(CustomFont.mine, size: 40))
+                            .foregroundColor(.green)
+                        
+                        
+                        
+                        Text("We can't afford to ignore the environment issue anymore.")
+                            .font(.custom(CustomFont.mine, size: 30))
+                            .foregroundColor(.white)
+                        
+                        Text("Each of us need to make change")
+                            .font(.custom(CustomFont.mine, size: 30))
+                            .foregroundColor(.white)
+                        Text("from our daily lives to prevent things getting worse.")
+                            .font(.custom(CustomFont.mine, size: 30))
+                            .foregroundColor(.white)
+                        
+                        Text("global homework to resovle as long as we live.")
+                            .font(.custom(CustomFont.mine, size: 30))
+                            .foregroundColor(.white)
+                        
+                        
+                    }
+                    .padding(.horizontal,20)
                     
-                    Text("saafadsfsdkf;lsadf;aklsdflsd;kfa;sdlkfsda;klfdskf;dsa;flk")
-                        .font(.custom(CustomFont.mine, size: 40))
-                        .foregroundColor(.white)
+                    
+                   
+                   
                     
                     NavigationLink(destination:ContentView(),isActive:$restart)
                     {
                         Button {
                             restart = true
                         } label: {
-                            Image("restart")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width:UIScreen.height/6,height: UIScreen.height/6)
+                            
+                            VStack(spacing:20){
+                                Text("Press to resatrt.")
+                                    .font(.custom(CustomFont.mine, size: 30))
+                                    .foregroundColor(.white)
+                                Image("restart")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width:UIScreen.height/6,height: UIScreen.height/6)
+                            }
+                           
                         }
 
-                    }
+                    }.padding(.top,30)
                  
+                    Text("BGM : Hexacube - Red Heart Comes To You")
+                        .font(.custom(CustomFont.light, size: 20))
+                        .foregroundColor(.white)
+                    
+                    Text("GameFont : MineCrafter")
+                        .font(.custom(CustomFont.light, size: 20))
+                        .foregroundColor(.white)
                     
                 }
-                .padding()
-                .frame(maxHeight: .infinity)
+                .padding(.horizontal,20)
+                .padding(.vertical,10)
+                .background(.black.opacity(0.5))
                 
                 
                 
