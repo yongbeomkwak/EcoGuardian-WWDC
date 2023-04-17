@@ -91,14 +91,14 @@ struct Conversation {
     
     static let howtoPlay:[Item] = [
         
-        Item(item: "speakBird", content: ["Touch the screen then I'll fly."]),
+        Item(item: "speakBird", content: ["Tap the screen to fly."]),
         
-        Item(item: "100", content: ["This is the Carbon-thermometer","Let's take the carbon rate down from 100 to 0."]),
+        Item(item: "100", content: ["Check carbon levels with ","the Carbon-thermometer.","Bring carbon rate down to 0 from 100."]),
        
-        Item(item: "bulb", content: ["When I crash on the turned off light bulb,","it will reduce 30% of the carbon"]),
-        Item(item: "tree", content: ["When I catch and save the tree,","it will reduce 10% of the carbon"]),
+        Item(item: "bulb", content: ["Hitting turned-off light bulbs reduces ","30% of carbon"]),
+        Item(item: "tree", content: ["Saving trees reduces 10% of carbon."]),
         
-        Item(item: "villain", content: ["When I eat the cloud,","it will increase 10% of the carbon"])]
+        Item(item: "villain", content: ["Cloud exposure raises carbon by 10%"])]
 
 
                                       

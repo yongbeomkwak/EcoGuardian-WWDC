@@ -93,18 +93,18 @@ struct GameView: View {
                     VStack(spacing: 15){
                                      
                         
-                        Text("We can't blindfold ourselves in front of the environment issue anymore.")
+                        Text("We can't ignore environmental issues any longer.")
                             .font(.custom(CustomFont.regular, size: FontSize.advice))
                             .foregroundColor(.white)
                         
-                        Text("Each and every one of us has to make a change.")
+                        Text("Everyone needs to make a change.")
                             .font(.custom(CustomFont.regular, size: FontSize.advice))
                             .foregroundColor(.white)
-                        Text("The changes we make in our daily lives can stop things from getting worse.")
+                        Text("Our daily choices can make a difference.")
                             .font(.custom(CustomFont.regular, size: FontSize.advice))
                             .foregroundColor(.white)
                         
-                        Text("It's the homework for all of us living in this earth as long as we're living in here.")
+                        Text("It's our collective responsibility to take care of our planet.")
                             .font(.custom(CustomFont.regular, size: FontSize.advice))
                             .foregroundColor(.white)
                         
