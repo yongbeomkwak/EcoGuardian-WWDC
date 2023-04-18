@@ -74,7 +74,7 @@ struct GameView: View {
                         
                         HStack(alignment:.bottom){
                             
-                            Text("Wow you get absorbed")
+                            Text("Wow, you just absorbed")
                                 .font(.custom(CustomFont.mine, size: FontSize.mine))
                                 .foregroundColor(.green)
                             
@@ -82,7 +82,7 @@ struct GameView: View {
                                 .font(.custom(CustomFont.mine, size: FontSize.mine + 10))
                                 .foregroundColor(.white)
                             
-                            Text("pounds")
+                            Text("pounds of carbon")
                                 .font(.custom(CustomFont.mine, size: FontSize.mine))
                                 .foregroundColor(.green)
                         }

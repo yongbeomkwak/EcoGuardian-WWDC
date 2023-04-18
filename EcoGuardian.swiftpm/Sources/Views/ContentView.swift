@@ -78,7 +78,7 @@ struct ContentView: View {
                             
                            
                             
-                            Text("World Resources Institute, Carbon Brief, WWF, The New Climate Economy")
+                            Text("World Resources Institute, Carbon Brief, WWF, The New Climate Economy,activesustainability")
                                 .font(.caption)
                                 .foregroundColor(.white)
                                 .padding(.bottom,20)
