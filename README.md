@@ -1,38 +1,91 @@
 <div align="center">
 
-# Eco Guardian
+# [Eco Guardian](https://youtu.be/3w-ZFaWLuuM)
 
- WWDC22 Swift Student Challenge [Accepted]
+ WWDC23 Swift Student Challenge [Accepted]
 
 </div>
 
 <br/>
 
-## 🔐 About ‘What’s PII'
-> ‘What’s PII' is an educational app that helps people learn about PII easily.
+## 🌍 About ‘Eco Guardian
+> ‘Eco Guardian' is an educational app that tells  how to reduce carbon in the atmosphere.
 
-‘Personally Identifiable Information (PII)’ is a legal term pertaining to information security environments. 
-As Information technology has come a long way over the past few years, the value of PII becomes more important, and personal information could be easily and frequently leaked in various situations. And there are people who are still not well aware of personal information and are in situations where they leak PII in spite of theirselves.
+<br><br>
 
-In this app, you can easily learn how to distinguish PII data while finding and hiding PII in various hypothetical situations. (such as sending e-mails, posting on the Internet, etc)
+## ⚙️ Composition
 
+My app consists of three main parts with distinct functionalities. 
+
+The first part is the introduction screen, which showcases a moving giant carbon cloud and an endangered Earth.
+
+The moving carbon cloud was created using SpriteKit's action feature, while the Earth and buttons were developed using SwiftUI.
+
+The second part features a game story that addresses the current environmental crisis through a conversational approach using SwiftUI.
+
+The third part is the actual game, which uses SpriteKit to teach players what actions to avoid and what actions to take in order to raise awareness and promote positive environmental actions.
+
+<br><br>
 
  ## ✨ Features
  
-| Learn About PII 	| Take a Quiz 	| Get Results |
+| Intro | Conversation 	| Game |
 |--------------------	|-------------	|------------------	|
-| <img width="250" src="https://user-images.githubusercontent.com/63157395/183291450-1af553e9-0ff2-4704-b26b-2441f0b0cbc9.gif" /> | <img width="250" src="https://user-images.githubusercontent.com/63157395/183292355-f6916178-f3df-41f9-978e-54bb86d588bb.gif" /> | <img width="250" src="https://user-images.githubusercontent.com/63157395/183291235-689c8a3d-935e-4ed9-bcd0-ee0b6e191602.png" /> |
+| <img width="300" src="https://github.com/yongbeomkwak/WWDC2023/assets/48616183/e001e4d5-85e6-44e9-bf11-7445b5881064" /> | <img width="300" src="https://github.com/yongbeomkwak/WWDC2023/assets/48616183/e1a29764-74f8-4444-9390-03650c708929"/> | <img width="300" src="https://github.com/yongbeomkwak/WWDC2023/assets/48616183/a9802543-7bfb-4670-a12b-de91a83d71ed" /> |
 
 
-<br/>
+<br/><br>
 
-## Requirements 
 
-What's PII is designed and developed for
-- `iPad`
-- `iPhone`
- 
- 
-## References
- - Handbook for Safeguarding Sensitive PII, DHS Privacy Policy Directive 047-01-007
- - www.pii-tools.com
+
+
+### 🔓 License
+
+1.[AppIcon(FreeSource)](https://www.flaticon.com/free-icon/green-energy_4735078?related_id=4735078&origin=pack)
+
+
+✅ For commercial and personal projects
+
+✅ On digital or printed media
+
+✅ For an unlimited number of times without interruption
+
+✅ Anywhere in the world
+
+✅ To make changes and create derivative works
+
+
+2. [ImageSource](https://www.freepik.com/)
+
+✅ For commercial and personal projects
+
+✅ On digital or printed media
+
+✅ For an unlimited number of times without interruption
+
+✅ Anywhere in the world
+
+✅ To make changes and create derivative works
+
+
+
+3. Game BGM
+Song : Hexacube - Red Heart Comes To You
+
+Follow Artist : https://bit.ly/3JGVi6b
+
+Music promoted by DayDreamSound : https://bit.ly/3FKn7JC
+
+4.[GameEffectSound](https://freesound.org/)
+
+5.GameFont
+
+This Font "MineCrafter" is under the creative commons license and can be used non-commercialy,
+as long as it is passed along unchanged and in whole, with credit to one of the following names ;
+
+"PurePixel", "MadPixel"
+
+If your looking to use this font commercially please contact me before using the font.
+
+Enjoy and donations appreciated.
+
