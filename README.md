@@ -41,51 +41,28 @@ The third part is the actual game, which uses SpriteKit to teach players what ac
 
 ### 🔓 License
 
-1.[AppIcon(FreeSource)](https://www.flaticon.com/free-icon/green-energy_4735078?related_id=4735078&origin=pack)
+- [AppIcon(FreeSource)](https://www.flaticon.com/free-icon/green-energy_4735078?related_id=4735078&origin=pack)
+
+- [ImageSource](https://www.freepik.com/)
 
 
-✅ For commercial and personal projects
+- Game BGM
+  Song : Hexacube - Red Heart Comes To You
 
-✅ On digital or printed media
+  Follow Artist : https://bit.ly/3JGVi6b
 
-✅ For an unlimited number of times without interruption
+  Music promoted by DayDreamSound : https://bit.ly/3FKn7JC
 
-✅ Anywhere in the world
+- [GameEffectSound](https://freesound.org/)
 
-✅ To make changes and create derivative works
+- GameFont
 
+  This Font "MineCrafter" is under the creative commons license and can be used non-commercialy,
+  as long as it is passed along unchanged and in whole, with credit to one of the following names ;
 
-2. [ImageSource](https://www.freepik.com/)
+  "PurePixel", "MadPixel"
 
-✅ For commercial and personal projects
+  If your looking to use this font commercially please contact me before using the font.
 
-✅ On digital or printed media
-
-✅ For an unlimited number of times without interruption
-
-✅ Anywhere in the world
-
-✅ To make changes and create derivative works
-
-
-
-3. Game BGM
-Song : Hexacube - Red Heart Comes To You
-
-Follow Artist : https://bit.ly/3JGVi6b
-
-Music promoted by DayDreamSound : https://bit.ly/3FKn7JC
-
-4.[GameEffectSound](https://freesound.org/)
-
-5.GameFont
-
-This Font "MineCrafter" is under the creative commons license and can be used non-commercialy,
-as long as it is passed along unchanged and in whole, with credit to one of the following names ;
-
-"PurePixel", "MadPixel"
-
-If your looking to use this font commercially please contact me before using the font.
-
-Enjoy and donations appreciated.
+  Enjoy and donations appreciated.
 
