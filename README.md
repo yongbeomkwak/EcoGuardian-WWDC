@@ -47,11 +47,11 @@ The third part is the actual game, which uses SpriteKit to teach players what ac
 
 
 - Game BGM
-  Song : Hexacube - Red Heart Comes To You
+  - Song : Hexacube - Red Heart Comes To You
 
-  Follow Artist : https://bit.ly/3JGVi6b
+  - Follow Artist : https://bit.ly/3JGVi6b
 
-  Music promoted by DayDreamSound : https://bit.ly/3FKn7JC
+  - Music promoted by DayDreamSound : https://bit.ly/3FKn7JC
 
 - [GameEffectSound](https://freesound.org/)
 
