@@ -1,8 +1,14 @@
-<div align="center">
 
-# [Eco Guardian](https://youtu.be/3w-ZFaWLuuM)
+
+<div align="center">
+ 
+<img src = "https://github.com/yongbeomkwak/WWDC2023/assets/48616183/4909efa4-cd73-4a65-85d5-3da7aa21454f">
+
+<br><br>
 
  WWDC23 Swift Student Challenge [Accepted]
+ 
+### [Youtube](https://youtu.be/3w-ZFaWLuuM)
 
 </div>
 
