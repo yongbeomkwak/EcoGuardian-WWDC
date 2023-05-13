@@ -14,7 +14,7 @@
 
 <br/>
 
-## 🌍 About ‘Eco Guardian
+## 🌍 About ‘Eco Guardian'
 > ‘Eco Guardian' is an educational app that tells  how to reduce carbon in the atmosphere.
 
 <br><br>
